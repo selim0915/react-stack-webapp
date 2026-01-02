@@ -2,32 +2,58 @@ import styled from 'styled-components';
 import { Theme } from '../utils/constants';
 
 // Header
-export const StyledHeader = styled.header`
+export const HeaderWrapper = styled.header`
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   width: 100%;
   height: ${Theme.headerHeight};
-  padding: ${Theme.rlPadding};
+  padding: 0 ${Theme.rlPadding};
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
-  align-content: center;
   align-items: center;
-  flex-wrap: wrap;
-  border-bottom: 1px solid ${Theme.borderColor};
+  background: rgba(255, 255, 255, 0.7);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 `;
-export const StyledHeaderLogo = styled.a`
-  font-size: 18px;
-  font-weight: bold;
-  color: ${Theme.mainColor};
+
+export const LogoSection = styled.a`
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: #1d1d1f;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.7;
+  }
 `;
-export const StyledHeaderItemWrap = styled.div`
+
+export const HeaderActions = styled.div`
   display: flex;
-  gap: 20px;
+  align-items: center;
+  gap: 24px;
 `;
-export const StyledA = styled.a`
-  font-size: 12px;
+
+export const ActionLink = styled.a`
+  font-size: 13px;
+  font-weight: 500;
+  color: #424245;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.2s ease, transform 0.2s ease;
+
+  &:hover {
+    color: ${Theme.mainColor};
+  }
 `;
-export const StyledDiv = styled.div`
-  font-size: 12px;
+
+export const StatusText = styled.span`
+  font-size: 13px;
+  font-weight: 400;
+  color: #86868b;
 `;
 
 // Nav

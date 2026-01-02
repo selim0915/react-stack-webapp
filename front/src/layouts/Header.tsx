@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledA, StyledDiv, StyledHeader, StyledHeaderItemWrap, StyledHeaderLogo } from '../styles/layout.style';
+import { ActionLink, HeaderActions, HeaderWrapper, LogoSection, StatusText } from '../styles/layout.style';
 import { RouteLink, WordKey } from '../utils/constants';
 import { deleteAllCookies } from '../utils/cookie';
 
@@ -14,19 +14,20 @@ const Header: React.FC<HeaderProp> = ({ userId }) => {
   };
 
   return (
-    <StyledHeader>
-      <StyledHeaderLogo href={RouteLink.MAIN}>{WordKey.PROJECT_NAME}</StyledHeaderLogo>
-      <StyledHeaderItemWrap>
+    <HeaderWrapper>
+      <LogoSection href={RouteLink.MAIN}>{WordKey.PROJECT_NAME}</LogoSection>
+
+      <HeaderActions>
         {userId ? (
           <>
-            <StyledDiv>{userId}님</StyledDiv>
-            <StyledA onClick={logout}>로그아웃</StyledA>
+            <StatusText>{userId}님</StatusText>
+            <ActionLink onClick={logout}>로그아웃</ActionLink>
           </>
         ) : (
-          <StyledA href={RouteLink.LOGIN}>로그인</StyledA>
+          <ActionLink href={RouteLink.LOGIN}>로그인</ActionLink>
         )}
-      </StyledHeaderItemWrap>
-    </StyledHeader>
+      </HeaderActions>
+    </HeaderWrapper>
   );
 };
 
