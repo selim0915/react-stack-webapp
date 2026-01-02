@@ -34,3 +34,10 @@ declare module '*.webp' {
   const content: string;
   export default content;
 }
+
+declare global {
+  interface Window {
+    dataLayer: unknown[];
+    gtag: (command: string, ...args: unknown[]) => void;
+  }
+}

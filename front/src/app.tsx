@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
+import GoogleAnalytics from './components/GoogleAnalytics';
 import AppRouter from './routes/AppRouter';
 
 const App: React.FC = () => (
@@ -9,6 +10,7 @@ const App: React.FC = () => (
       v7_startTransition: true,
     }}
   >
+    <GoogleAnalytics />
     <AppRouter />
   </Router>
 );
