@@ -22,7 +22,7 @@ module.exports = {
     host: '0.0.0.0',
     server: { type: 'https' },
     static: [
-      { directory: path.join(__dirname, 'public'), publicPath: '/' },
+      { directory: path.join(__dirname, 'front/public'), publicPath: '/' },
       { directory: path.join(__dirname, 'front/src'), publicPath: '/src' },
     ],
     historyApiFallback: true,
