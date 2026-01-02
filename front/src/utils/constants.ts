@@ -10,3 +10,9 @@ export const Theme = {
   mainColor: '#797979',
   borderColor: '#ececec',
 };
+
+export const CookieKey = {
+  ACCESS_TOKEN: 'accessToken',
+  USER_ID: 'userId',
+  ROLE: 'role',
+};

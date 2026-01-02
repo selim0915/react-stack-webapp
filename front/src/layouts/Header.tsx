@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyledA, StyledDiv, StyledHeader, StyledHeaderItemWrap, StyledHeaderLogo } from '../styles/layout.style';
-import { WordKey } from '../utils/constants';
+import { CookieKey, WordKey } from '../utils/constants';
+import { deleteAllCookies, getCookie } from '../utils/cookie';
 
 interface HeaderProp {
   isLoggedIn: boolean;
@@ -8,7 +9,7 @@ interface HeaderProp {
 
 const Header: React.FC<HeaderProp> = ({ isLoggedIn }) => {
   const logout = () => {
-    localStorage.clear();
+    deleteAllCookies();
     window.location.href = '/login';
   };
 
@@ -18,10 +19,12 @@ const Header: React.FC<HeaderProp> = ({ isLoggedIn }) => {
       <StyledHeaderItemWrap>
         {isLoggedIn ? (
           <>
-            <StyledDiv>{localStorage.getItem('id')}님</StyledDiv>
+            <StyledDiv>{getCookie(CookieKey.USER_ID)}님</StyledDiv>
             <StyledA onClick={logout}>로그아웃</StyledA>
           </>
-        ) : <StyledA href="/login">로그인</StyledA>}
+        ) : (
+          <StyledA href="/login">로그인</StyledA>
+        )}
       </StyledHeaderItemWrap>
     </StyledHeader>
   );
