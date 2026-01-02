@@ -1,6 +1,7 @@
 require('dotenv').config();
 
 const path = require('path');
+const https = require('https');
 const express = require('express');
 const cors = require('cors');
 
@@ -11,12 +12,13 @@ if (process.env.USE_DB === 'true') {
 
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
-const { NODE_PORT } = require('./properties');
+const { loadSSL } = require('./config/ssl');
 const logger = require('./config/winston');
-const setupWebSocket = require('./config/websocket');
+const setupWebSocket = require('./websocket');
 const webpackConfig = require('../webpack.config');
 
 const app = express();
+const NODE_PORT = 4000;
 
 const ROOT = path.resolve(__dirname, '../dist');
 const IS_PROD = process.env.NODE_ENV === 'production';
@@ -70,7 +72,10 @@ if (IS_PROD) {
 // webSocket
 setupWebSocket();
 
-app.listen(NODE_PORT, () => {
+// HTTPS Server
+const server = https.createServer(loadSSL(), app);
+
+server.listen(NODE_PORT, () => {
   console.log(`Listening on ${NODE_PORT}`);
 });
 
