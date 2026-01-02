@@ -83,7 +83,7 @@ export const StyledNavItem = styled.li`
 export const StyledNavItemIink = styled.a`
   font-size: 14px;
   color: ${Theme.mainColor};
-  text-decoration: none;
+
   &:hover {
     font-weight: bold;
   }
@@ -122,4 +122,15 @@ export const StyledFooter = styled.footer`
   display: flex;
   align-items: center;
   justify-content: center;
+`;
+
+// page
+export const LoginLayout = styled.div`
+  width: 100%;
+  max-width: 480px;
+  margin: 100px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
 `;

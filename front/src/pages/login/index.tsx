@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { CommonButton, CommonForm, CommonInput } from '../../styles/common.style';
-import { CookieKey, UserRole, WordKey } from '../../utils/constants';
+import { CommonButton, CommonForm, CommonImage, CommonInput, CommonInputText } from '../../styles/common.style';
+import { LoginLayout } from '../../styles/layout.style';
+import { CookieKey, UserRole } from '../../utils/constants';
 import { setCookie } from '../../utils/cookie';
+import { sampeople } from '../../utils/image.import';
 
 const Login: React.FC = () => {
   const [userId, setUserId] = useState<string>('');
@@ -34,13 +36,17 @@ const Login: React.FC = () => {
   };
 
   return (
-    <CommonForm onSubmit={login}>
-      <h1>{WordKey.PROJECT_NAME}</h1>
-      <CommonInput type="text" id="userId" value={userId} onChange={handleChange} placeholder="아이디" />
-      <CommonInput type="password" id="password" value={password} onChange={handleChange} placeholder="비밀번호" />
-      <span>{msg}</span>
-      <CommonButton type="submit">로그인</CommonButton>
-    </CommonForm>
+    <LoginLayout>
+      <CommonImage src={sampeople} alt="netflix logo" width={180} height={100} />
+
+      <CommonForm onSubmit={login}>
+        <CommonInput type="text" id="userId" value={userId} onChange={handleChange} placeholder="아이디" />
+        <CommonInput type="password" id="password" value={password} onChange={handleChange} placeholder="비밀번호" />
+        <CommonInputText>{msg}</CommonInputText>
+
+        <CommonButton type="submit">로그인</CommonButton>
+      </CommonForm>
+    </LoginLayout>
   );
 };
 

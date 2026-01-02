@@ -5,7 +5,7 @@ import useAuth from '../hooks/useAuth';
 import Footer from '../layouts/Footer';
 import Header from '../layouts/Header';
 import Nav from '../layouts/Nav';
-import { StyledArticle, StyledContent } from '../styles/layout.style';
+import { StyledArticle, StyledContent, StyledMain } from '../styles/layout.style';
 import { routeConfig } from './index';
 
 const AppRouter: React.FC = () => {
@@ -15,7 +15,7 @@ const AppRouter: React.FC = () => {
   const currentLayout = currentRoute?.layout || [];
 
   return (
-    <>
+    <StyledMain>
       {currentLayout.includes('header') && <Header userId={userId} />}
       {currentLayout.includes('nav') && isLoggedIn && <Nav userRole={userRole} />}
 
@@ -29,7 +29,7 @@ const AppRouter: React.FC = () => {
         </StyledContent>
         {currentLayout.includes('footer') && <Footer />}
       </StyledArticle>
-    </>
+    </StyledMain>
   );
 };
 
