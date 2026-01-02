@@ -1,15 +1,15 @@
 require('dotenv').config();
+
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { WEBPACK_PORT } = require('./server/properties');
 
-const mode = process.env.NODE_ENV;
+const mode = process.env.NODE_ENV || 'development';
 
 module.exports = {
   mode,
-  entry: path.resolve(__dirname, './front/src/index.tsx'),
+  entry: './front/src/index.tsx',
   output: {
     filename: '[name].js',
     path: path.resolve(__dirname, './dist'),
@@ -18,12 +18,18 @@ module.exports = {
   },
   devtool: 'source-map',
   devServer: {
-    port: WEBPACK_PORT,
-    static: {
-      publicPath: '/',
-    },
-    compress: true,
+    port: 4002,
+    host: '0.0.0.0',
+    server: { type: 'https' },
+    static: [
+      { directory: path.join(__dirname, 'public'), publicPath: '/' },
+      { directory: path.join(__dirname, 'front/src'), publicPath: '/src' },
+    ],
     historyApiFallback: true,
+    proxy: {
+      '/product': 'http://localhost:4000',
+      '/api': 'http://localhost:4000',
+    },
   },
   module: {
     rules: [

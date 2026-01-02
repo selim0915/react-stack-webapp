@@ -2,11 +2,12 @@ const fs = require('fs');
 const WebSocket = require('ws');
 const { spawn } = require('child_process');
 const iconv = require('iconv-lite');
-const logger = require('./winston');
-const { WSS_PORT } = require('../properties');
+const logger = require('./config/winston');
 
 const ENCODING = 'utf-8';
 const GIT_BASH_PATH = 'C:\\Program Files\\Git\\bin\\bash.exe';
+
+const WSS_PORT = 4001;
 
 /*
  TODO

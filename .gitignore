@@ -5,3 +5,5 @@ logs/
 .eslintcache
 .parcel-cache/
 out/
+$$*
+cert/
