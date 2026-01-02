@@ -68,3 +68,5 @@ setupWebSocket();
 app.listen(NODE_PORT, () => {
   console.log(`Listening on ${NODE_PORT}`);
 });
+
+module.exports = app;

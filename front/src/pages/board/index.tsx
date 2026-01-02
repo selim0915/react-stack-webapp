@@ -41,9 +41,14 @@ const Board: React.FC = () => {
   };
 
   useEffect(() => {
-    api.get('/product/list').then((res) => {
-      setProductList(res.data);
-    });
+    api
+      .get('/product/list')
+      .then((res) => {
+        setProductList(res.data);
+      })
+      .catch((err) => {
+        console.error('Board API Error:', err.message);
+      });
   }, []);
 
   return (
@@ -51,24 +56,46 @@ const Board: React.FC = () => {
       <h1>Board Page</h1>
 
       <div>
-        <p id="counter" className='text-2xl'>{count}</p>
+        <p id="counter" className="text-2xl">
+          {count}
+        </p>
 
         {isLoading && <div>Loading...</div>}
 
-        <button type='button' id="btn-increase" className='px-4 py-2 border border-gray-300 rounded hover:bg-gray-200 
-                   focus:outline-none focus:ring-2 focus:ring-gray-300' onClick={handleIncrease}>
+        <button
+          type="button"
+          id="btn-increase"
+          className="px-4 py-2 border border-gray-300 rounded hover:bg-gray-200 
+                   focus:outline-none focus:ring-2 focus:ring-gray-300"
+          onClick={handleIncrease}
+        >
           Increase
         </button>
-        <button type='button' id="btn-async-increase" className='px-4 py-2 border border-gray-300 rounded hover:bg-gray-200 
-                   focus:outline-none focus:ring-2 focus:ring-gray-300' onClick={handleAsyncIncrease}>
+        <button
+          type="button"
+          id="btn-async-increase"
+          className="px-4 py-2 border border-gray-300 rounded hover:bg-gray-200 
+                   focus:outline-none focus:ring-2 focus:ring-gray-300"
+          onClick={handleAsyncIncrease}
+        >
           Async Increase
         </button>
-        <button type='button' id="btn-decrease" className='px-4 py-2 border border-gray-300 rounded hover:bg-gray-200 
-                   focus:outline-none focus:ring-2 focus:ring-gray-300' onClick={handleDecrease}>
+        <button
+          type="button"
+          id="btn-decrease"
+          className="px-4 py-2 border border-gray-300 rounded hover:bg-gray-200 
+                   focus:outline-none focus:ring-2 focus:ring-gray-300"
+          onClick={handleDecrease}
+        >
           Decrease
         </button>
-        <button type='button' id="btn-reset" className='px-4 py-2 border border-gray-300 rounded hover:bg-gray-200 
-                   focus:outline-none focus:ring-2 focus:ring-gray-300' onClick={handleReset}>
+        <button
+          type="button"
+          id="btn-reset"
+          className="px-4 py-2 border border-gray-300 rounded hover:bg-gray-200 
+                   focus:outline-none focus:ring-2 focus:ring-gray-300"
+          onClick={handleReset}
+        >
           Reset
         </button>
       </div>
