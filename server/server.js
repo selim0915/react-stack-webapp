@@ -3,7 +3,12 @@ require('dotenv').config();
 const path = require('path');
 const express = require('express');
 const cors = require('cors');
-// const db = require('./config/db');
+
+if (process.env.USE_DB === 'true') {
+  // eslint-disable-next-line global-require
+  require('./config/db');
+}
+
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const { NODE_PORT } = require('./properties');
@@ -22,7 +27,15 @@ app.use(cors());
 // logger
 app.use(logger.morganMiddleware);
 
-// webpack
+app.use(express.json());
+app.use(express.static(ROOT));
+
+// API routes - MUST be before frontend catch-all
+const routes = require('./routes/product');
+
+routes.initialize(app);
+
+// webpack & frontend catch-all
 if (IS_PROD) {
   app.get('*', (_req, res, _next) => {
     res.sendFile(path.join(ROOT, 'index.html'), (err) => {
@@ -53,14 +66,6 @@ if (IS_PROD) {
     });
   });
 }
-
-app.use(express.json());
-app.use(express.static(ROOT));
-
-// route
-const routes = require('./routes/product');
-
-routes.initialize(app);
 
 // webSocket
 setupWebSocket();
