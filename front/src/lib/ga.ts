@@ -1,6 +1,6 @@
-export const initGA = () => {
-  const id = process.env.GA_MEASUREMENT_ID;
+const id = process.env.GA_MEASUREMENT_ID;
 
+export const initGA = () => {
   if (!id || typeof window === 'undefined') return;
 
   // Check if script already exists
@@ -13,19 +13,21 @@ export const initGA = () => {
   document.head.appendChild(script);
 
   window.dataLayer = window.dataLayer || [];
-  window.gtag = function gtag(...args: unknown[]) {
-    window.dataLayer.push(args);
+  window.gtag = function gtag() {
+    // eslint-disable-next-line prefer-rest-params
+    window.dataLayer.push(arguments);
   };
 
   window.gtag('js', new Date());
-  window.gtag('config', id);
+  window.gtag('config', id, { send_page_view: false });
 };
 
 export const trackPageView = (path: string) => {
-  const id = process.env.GA_MEASUREMENT_ID;
-  if (id && window.gtag) {
-    window.gtag('config', id, {
-      page_path: path,
-    });
-  }
+  if (!id || typeof window === 'undefined') return;
+
+  window.gtag('event', 'page_view', {
+    page_path: path,
+    page_location: window.location.href,
+    page_title: document.title,
+  });
 };
