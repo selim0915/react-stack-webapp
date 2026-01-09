@@ -3,9 +3,12 @@
 import React, { createContext, useContext } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './app';
+import { initSentry } from './lib/sentry';
 import Store from './store/store';
 import GlobalStyle from './styles/global.style';
 import { NewsStore } from './types/newFeed.type';
+
+initSentry();
 
 const NewsStoreContext = createContext<NewsStore | undefined>(undefined);
 
@@ -28,6 +31,6 @@ if (rootElement) {
         <GlobalStyle />
         <App />
       </React.StrictMode>
-    </NewsStoreContext.Provider>
+    </NewsStoreContext.Provider>,
   );
 }

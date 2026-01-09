@@ -1,3 +1,4 @@
+import * as Sentry from '@sentry/react';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CommonButton } from '../../styles/common.style';
@@ -6,7 +7,18 @@ import { RouteLink } from '../../utils/constants';
 const NotFound: React.FC = () => {
   const navigate = useNavigate();
 
+  const triggerSentryError = () => {
+    Sentry.logger?.info('User triggered test error', {
+      action: 'test_error_button_click',
+    });
+
+    Sentry.metrics?.count('test_counter', 1);
+    throw new Error('This is your first error!');
+  };
+
   const goMain = () => {
+    triggerSentryError();
+
     navigate(RouteLink.MAIN);
   };
 
