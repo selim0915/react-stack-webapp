@@ -14,7 +14,6 @@ const Board: React.FC = () => {
   const [count, setCount] = useState<number>(0);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [productList, setProductList] = useState<ProductType[]>([]);
-
   useEffect(() => {
     const handler = () => {
       const state = store.getState();

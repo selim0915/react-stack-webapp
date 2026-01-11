@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
+import ProtectedRoute from '../components/ProtectedRoute';
 import useAccess from '../hooks/useAccess';
 import useAuth from '../hooks/useAuth';
 import Footer from '../layouts/Footer';
@@ -10,7 +11,7 @@ import { routeConfig } from './index';
 
 const AppRouter: React.FC = () => {
   const { isLoggedIn, userRole, userId } = useAuth();
-  const { hasAccess, currentRoute } = useAccess();
+  const { currentRoute } = useAccess();
 
   const currentLayout = currentRoute?.layout || [];
 
@@ -23,7 +24,15 @@ const AppRouter: React.FC = () => {
         <StyledContent>
           <Routes>
             {routeConfig.map((route) => (
-              <Route key={route.path} path={route.path} element={hasAccess ? <route.element /> : null} />
+              <Route
+                key={route.path}
+                path={route.path}
+                element={
+                  <ProtectedRoute authRequired={route.authRequired} roles={route.roles}>
+                    <route.element />
+                  </ProtectedRoute>
+                }
+              />
             ))}
           </Routes>
         </StyledContent>
