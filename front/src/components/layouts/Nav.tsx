@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import useAuth from '../hooks/useAuth';
-import routeConfig from '../routes';
-import { StyledNav, StyledNavItem, StyledNavItemIink, StyledNavItemWrap } from '../styles/layout.style';
-import { RouteMenuItem } from '../types/core.type';
+import useAuth from '../../hooks/useAuth';
+import routeConfig from '../../routes/route.config';
+import { RouteMenuItem } from '../../types/core.type';
+import { StyledNav, StyledNavItem, StyledNavItemIink, StyledNavItemWrap } from './layout.style';
 
 const Nav: React.FC = () => {
   const { isLoggedIn, userRole } = useAuth();

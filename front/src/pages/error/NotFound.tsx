@@ -1,8 +1,8 @@
 import * as Sentry from '@sentry/react';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { CommonButton } from '../../styles/common.style';
-import { RouteLink } from '../../utils/constants';
+import { Button } from '../../components/commons';
+import { RouteLink } from '../../routes/routes';
 
 const NotFound: React.FC = () => {
   const navigate = useNavigate();
@@ -38,9 +38,9 @@ const NotFound: React.FC = () => {
       <p style={{ color: '#666', marginBottom: '30px' }}>
         입력하신 주소가 잘못되었거나, 페이지가 이동 또는 삭제되었을 수 있습니다.
       </p>
-      <CommonButton onClick={goMain} style={{ width: '200px' }}>
+      <Button onClick={goMain} style={{ width: '200px' }}>
         메인으로 돌아가기
-      </CommonButton>
+      </Button>
     </div>
   );
 };

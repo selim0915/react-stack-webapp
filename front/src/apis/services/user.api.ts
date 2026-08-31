@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { UserState } from '../../store/slices/userSlice';
 
 // 실제 백엔드 API가 있다면 이 부분을 해당 API 호출로 변경해야 합니다.

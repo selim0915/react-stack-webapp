@@ -4,9 +4,9 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import APIs from '../../apis';
+import { Button, Title } from '../../components/commons';
 import { useAppDispatch } from '../../store/hooks';
 import { makeRead } from '../../store/slices/newsSlice';
-import { CommonButton, CommonTitle } from '../../styles/common.style';
 import { NewsComment } from '../../types/newFeed.type';
 
 const Comment: React.FC<{ comment: NewsComment }> = ({ comment }) => (
@@ -61,7 +61,7 @@ const FreeBoardDetail: React.FC = () => {
 
   return (
     <div>
-      <CommonTitle>자유게시판 상세보기</CommonTitle>
+      <Title>자유게시판 상세보기</Title>
 
       <div style={{ borderBottom: '1px solid #eee', paddingBottom: '20px', marginBottom: '20px', marginTop: '30px' }}>
         <h2 style={{ fontSize: '24px', fontWeight: '600', color: '#1d1d1f' }}>{title}</h2>
@@ -86,12 +86,12 @@ const FreeBoardDetail: React.FC = () => {
       </div>
 
       <div style={{ marginTop: '40px', display: 'flex', justifyContent: 'flex-end' }}>
-        <CommonButton
+        <Button
           onClick={() => navigate(-1)}
           style={{ width: 'auto', padding: '10px 24px', backgroundColor: '#86868b' }}
         >
           목록
-        </CommonButton>
+        </Button>
       </div>
     </div>
   );

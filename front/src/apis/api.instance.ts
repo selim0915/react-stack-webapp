@@ -1,5 +1,5 @@
 import axios, { AxiosError, AxiosInstance } from 'axios';
-import { CookieKey } from '../utils/constants';
+import { CookieKey } from '../constants/app.config';
 import { getCookie, removeCookie } from '../utils/cookie';
 
 const api: AxiosInstance = axios.create();

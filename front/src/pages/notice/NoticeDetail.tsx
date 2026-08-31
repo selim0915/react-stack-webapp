@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { Button, Title } from '../../components/commons';
+import { UserRole } from '../../constants/app.config';
 import useAuth from '../../hooks/useAuth';
-import { CommonButton, CommonTitle } from '../../styles/common.style';
-import { RouteLink, UserRole } from '../../utils/constants';
+import { RouteLink } from '../../routes/routes';
 
 interface Post {
   id: number;
@@ -48,7 +49,7 @@ const NoticeDetail: React.FC = () => {
 
   return (
     <div>
-      <CommonTitle>공지사항 상세보기</CommonTitle>
+      <Title>공지사항 상세보기</Title>
 
       <div style={{ borderBottom: '1px solid #eee', paddingBottom: '20px', marginBottom: '20px', marginTop: '30px' }}>
         <h2 style={{ fontSize: '24px', fontWeight: '600' }}>{post.title}</h2>
@@ -62,27 +63,24 @@ const NoticeDetail: React.FC = () => {
       <div
         style={{ marginTop: '40px', display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: '10px' }}
       >
-        <CommonButton
+        <Button
           onClick={() => navigate(RouteLink.NOTICE)}
           style={{ width: 'auto', padding: '10px 24px', backgroundColor: '#86868b' }}
         >
           목록
-        </CommonButton>
+        </Button>
 
         {(userId === post.author || userRole === UserRole.ADMIN) && (
           <div style={{ display: 'flex', gap: '10px' }}>
-            <CommonButton
+            <Button
               onClick={() => navigate(RouteLink.NOTICE_EDIT.replace(':id', post.id.toString()))}
               style={{ width: 'auto', padding: '10px 24px', backgroundColor: '#0071e3' }}
             >
               수정
-            </CommonButton>
-            <CommonButton
-              onClick={handleDelete}
-              style={{ width: 'auto', padding: '10px 24px', backgroundColor: '#ff3b30' }}
-            >
+            </Button>
+            <Button onClick={handleDelete} style={{ width: 'auto', padding: '10px 24px', backgroundColor: '#ff3b30' }}>
               삭제
-            </CommonButton>
+            </Button>
           </div>
         )}
       </div>

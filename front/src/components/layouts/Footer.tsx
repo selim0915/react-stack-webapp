@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledFooter } from '../styles/layout.style';
+import { StyledFooter } from './layout.style';
 
 const Footer: React.FC = () => <StyledFooter>ⓒ 2025 woo. All rights reserved.</StyledFooter>;
 

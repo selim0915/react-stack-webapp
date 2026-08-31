@@ -1,6 +1,6 @@
 import { useVirtualizer } from '@tanstack/react-virtual';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { ShellRow, ShellWord, ShellWrap, VirtualizerList } from '../pages/admin/admin.style';
+import { ShellRow, ShellWord, ShellWrap, VirtualizerList } from '../../pages/admin/system/admin.style';
 
 interface ShellProps {
   /** 출력할 로그 배열 */

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { initGA, trackPageView } from '../lib/ga';
+import { initGA, trackPageView } from '../../utils/ga';
 
 const GoogleAnalytics: React.FC = () => {
   const location = useLocation();

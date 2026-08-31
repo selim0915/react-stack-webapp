@@ -1,12 +1,12 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import ProtectedRoute from '../components/ProtectedRoute';
+import Footer from '../components/layouts/Footer';
+import Header from '../components/layouts/Header';
+import { StyledArticle, StyledContent, StyledMain } from '../components/layouts/layout.style';
+import Nav from '../components/layouts/Nav';
+import ProtectedRoute from '../components/providers/ProtectedRoute';
 import useAccess from '../hooks/useAccess';
-import Footer from '../layouts/Footer';
-import Header from '../layouts/Header';
-import Nav from '../layouts/Nav';
-import { StyledArticle, StyledContent, StyledMain } from '../styles/layout.style';
-import { routeConfig } from './index';
+import { routeConfig } from './route.config';
 
 const AppRouter: React.FC = () => {
   const { currentRoute } = useAccess();

@@ -1,4 +1,3 @@
-import React from 'react';
 
 declare module '*.scss' {
   const content: { [className: string]: string };
@@ -6,6 +5,8 @@ declare module '*.scss' {
 }
 
 declare module '*.svg' {
+  import React from 'react';
+
   const content: React.FunctionComponent<React.SVGAttributes<SVGElement>>;
   export default content;
 }

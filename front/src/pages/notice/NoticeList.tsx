@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Table, TH } from '../../components/Table';
-import { CommonButton, CommonTitle } from '../../styles/common.style';
-import { RouteLink } from '../../utils/constants';
-import { formatDate } from '../../utils/utils';
+import { Button, Table, TH, Title } from '../../components/commons';
+import { RouteLink } from '../../routes/routes';
+import { formatDate } from '../../utils/format';
 
 interface Post {
   id: number;
@@ -43,7 +42,7 @@ const NoticeList: React.FC = () => {
 
   return (
     <div>
-      <CommonTitle>공지사항 목록</CommonTitle>
+      <Title>공지사항 목록</Title>
 
       <div style={{ marginBottom: '20px' }}>
         <div style={{ marginTop: '10px', fontSize: '14px', color: '#666' }}>
@@ -92,7 +91,8 @@ const NoticeList: React.FC = () => {
         }}
       >
         <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-          <button
+          <Button
+            type='button'
             onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
             disabled={currentPage === 1}
             style={{
@@ -107,10 +107,11 @@ const NoticeList: React.FC = () => {
             }}
           >
             이전
-          </button>
+          </Button>
 
           {Array.from({ length: totalPages }, (_, i) => (
-            <button
+            <Button
+              type='button'  
               key={i + 1}
               onClick={() => setCurrentPage(i + 1)}
               style={{
@@ -129,10 +130,11 @@ const NoticeList: React.FC = () => {
               }}
             >
               {i + 1}
-            </button>
+            </Button>
           ))}
 
-          <button
+          <Button
+            type='button'
             onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
             disabled={currentPage === totalPages}
             style={{
@@ -147,16 +149,13 @@ const NoticeList: React.FC = () => {
             }}
           >
             다음
-          </button>
+          </Button>
         </div>
 
         <div style={{ position: 'absolute', right: 0 }}>
-          <CommonButton
-            onClick={() => navigate(RouteLink.NOTICE_WRITE)}
-            style={{ width: 'auto', padding: '10px 24px' }}
-          >
+          <Button onClick={() => navigate(RouteLink.NOTICE_WRITE)} style={{ width: 'auto', padding: '10px 24px' }}>
             글쓰기
-          </CommonButton>
+          </Button>
         </div>
       </div>
     </div>

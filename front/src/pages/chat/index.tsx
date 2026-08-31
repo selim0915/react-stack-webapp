@@ -1,9 +1,9 @@
 import React from 'react';
-import { CommonTitle } from '@/styles/common.style';
+import { Title } from '../../components/commons';
 
 const Chat: React.FC = () => (
   <div>
-    <CommonTitle>채팅방</CommonTitle>
+    <Title>채팅방</Title>
 
     <span>준비중입니다. </span>
   </div>

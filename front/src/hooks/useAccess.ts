@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import { matchPath, useLocation } from 'react-router-dom';
-import { routeConfig } from '../routes/index';
+import { routeConfig } from '../routes/route.config';
 import useAuth from './useAuth';
 
 export type AccessStatus = 'AUTHORIZED' | 'NEED_LOGIN' | 'FORBIDDEN' | 'ALREADY_LOGGED_IN';

@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import ErrorBoundary from './components/ErrorBoundary';
-import GoogleAnalytics from './components/GoogleAnalytics';
+import ErrorBoundary from './components/providers/ErrorBoundary';
+import GoogleAnalytics from './components/providers/GoogleAnalytics';
 import AppRouter from './routes/AppRouter';
 
 const App: React.FC = () => (

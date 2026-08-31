@@ -1,8 +1,8 @@
 import React, { createContext, useCallback, useMemo } from 'react';
 import APIs from '../apis';
+import { CookieKey } from '../constants/app.config';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { loginSuccess, logout as reduxLogout } from '../store/slices/userSlice';
-import { CookieKey } from '../utils/constants';
 import { deleteAllCookies, getCookie, setCookie } from '../utils/cookie';
 
 interface AuthContextType {

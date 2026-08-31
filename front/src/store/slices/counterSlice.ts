@@ -40,7 +40,7 @@ const counterSlice = createSlice({
 
 export const { increase, decrease, setCounter, asyncRequest, asyncResponse } = counterSlice.actions;
 
-export const asyncIncrease = (payload: any): any => (dispatch: any) => {
+export const asyncIncrease = (_payload: any): any => (dispatch: any) => {
   dispatch(asyncRequest());
   setTimeout(() => {
     dispatch(increase(20));

@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { Button, Form, Image, Input, InputHelperText } from '../../components/commons';
+import { LoginLayout } from '../../components/layouts/layout.style';
+import { UserRole } from '../../constants/app.config';
 import useAuth from '../../hooks/useAuth';
-import { CommonButton, CommonForm, CommonImage, CommonInput, CommonInputText } from '../../styles/common.style';
-import { LoginLayout } from '../../styles/layout.style';
-import { RouteLink, UserRole } from '../../utils/constants';
-import { sampeople } from '../../utils/image.import';
+import { RouteLink } from '../../routes/routes';
+import { sampeople } from '../../utils/images';
 
 const Login: React.FC = () => {
   const { login: authLogin, logout: authLogout } = useAuth();
@@ -44,16 +45,16 @@ const Login: React.FC = () => {
   return (
     <LoginLayout>
       <Link to={RouteLink.MAIN}>
-        <CommonImage src={sampeople} alt="logo" width={180} height={100} />
+        <Image src={sampeople} alt="logo" width={180} height={100} />
       </Link>
 
-      <CommonForm onSubmit={login}>
-        <CommonInput type="text" id="userId" value={userId} onChange={handleChange} placeholder="아이디" />
-        <CommonInput type="password" id="password" value={password} onChange={handleChange} placeholder="비밀번호" />
-        <CommonInputText>{msg}</CommonInputText>
+      <Form onSubmit={login}>
+        <Input type="text" id="userId" value={userId} onChange={handleChange} placeholder="아이디" />
+        <Input type="password" id="password" value={password} onChange={handleChange} placeholder="비밀번호" />
+        <InputHelperText>{msg}</InputHelperText>
 
-        <CommonButton type="submit">로그인</CommonButton>
-      </CommonForm>
+        <Button type="submit">로그인</Button>
+      </Form>
     </LoginLayout>
   );
 };

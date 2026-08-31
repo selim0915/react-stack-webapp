@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
-import useAuth from '../hooks/useAuth';
-import { RouteLink } from '../utils/constants';
+import useAuth from '../../hooks/useAuth';
+import { RouteLink } from '../../routes/routes';
 
 interface ProtectedRouteProps {
   authRequired: boolean;

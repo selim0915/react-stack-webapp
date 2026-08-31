@@ -1,5 +1,10 @@
-import Admin from '../pages/admin';
-import TestPage from '../pages/admin/TestPage';
+import { RouteLink } from './routes';
+import { UserRole } from '../constants/app.config';
+import ApiManagement from '../pages/admin/apis';
+import Dashboard from '../pages/admin/dashboard';
+import MemberManagement from '../pages/admin/members';
+import PostManagement from '../pages/admin/posts';
+import SystemManagement from '../pages/admin/system';
 import Chat from '../pages/chat';
 import Forbidden from '../pages/error/Forbidden';
 import NotFound from '../pages/error/NotFound';
@@ -7,12 +12,11 @@ import FreeBoardDetail from '../pages/freeboard/FreeBoardDetail';
 import FreeBoardList from '../pages/freeboard/FreeBoardList';
 import Login from '../pages/login';
 import Main from '../pages/main';
+import Schedule from '../pages/mypage';
 import NoticeDetail from '../pages/notice/NoticeDetail';
 import NoticeForm from '../pages/notice/NoticeForm';
 import NoticeList from '../pages/notice/NoticeList';
-import Schedule from '../pages/mypage';
 import { RouteMenuItem } from '../types/core.type';
-import { RouteLink, UserRole } from '../utils/constants';
 
 export const routeConfig: RouteMenuItem[] = [
   {
@@ -83,17 +87,53 @@ export const routeConfig: RouteMenuItem[] = [
   },
   {
     path: RouteLink.ADMIN,
-    label: '관리자 설정',
-    element: Admin,
+    label: '관리자 홈',
+    element: Dashboard, // 기본적으로 대시보드로 사용
     showInMenu: true,
     authRequired: true,
     roles: [UserRole.ADMIN],
     layout: ['header', 'nav', 'footer'],
   },
   {
-    path: RouteLink.ADMIN_TEST,
-    label: 'TEST',
-    element: TestPage,
+    path: RouteLink.ADMIN_DASHBOARD,
+    label: '대시보드',
+    element: Dashboard,
+    showInMenu: true,
+    authRequired: true,
+    roles: [UserRole.ADMIN],
+    layout: ['header', 'nav', 'footer'],
+  },
+  {
+    path: RouteLink.ADMIN_MEMBERS,
+    label: '회원 관리',
+    element: MemberManagement,
+    showInMenu: true,
+    authRequired: true,
+    roles: [UserRole.ADMIN],
+    layout: ['header', 'nav', 'footer'],
+  },
+  {
+    path: RouteLink.ADMIN_POSTS,
+    label: '게시글 관리',
+    element: PostManagement,
+    showInMenu: true,
+    authRequired: true,
+    roles: [UserRole.ADMIN],
+    layout: ['header', 'nav', 'footer'],
+  },
+  {
+    path: RouteLink.ADMIN_SYSTEM,
+    label: '서버 관리',
+    element: SystemManagement,
+    showInMenu: true,
+    authRequired: true,
+    roles: [UserRole.ADMIN],
+    layout: ['header', 'nav', 'footer'],
+  },
+  {
+    path: RouteLink.ADMIN_APIS,
+    label: 'API 관리',
+    element: ApiManagement,
     showInMenu: true,
     authRequired: true,
     roles: [UserRole.ADMIN],

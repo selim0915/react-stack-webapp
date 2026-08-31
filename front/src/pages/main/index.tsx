@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { CommonSubTitle, CommonTitle } from '../../styles/common.style';
+import { SubTitle, Title } from '../../components/commons';
 
 const Main: React.FC = () => {
   const [time, setTime] = useState(new Date());
@@ -14,8 +14,8 @@ const Main: React.FC = () => {
 
   return (
     <>
-      <CommonTitle>Welcome to Sampeople</CommonTitle>
-      <CommonSubTitle>Current Time: {time.toLocaleString()}</CommonSubTitle>
+      <Title>Welcome to Sampeople</Title>
+      <SubTitle>Current Time: {time.toLocaleString()}</SubTitle>
     </>
   );
 };

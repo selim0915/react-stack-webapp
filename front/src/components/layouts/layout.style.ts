@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Theme } from '../utils/constants';
+import { Theme } from '../../styles/theme';
 
 // Header
 export const HeaderWrapper = styled.header`

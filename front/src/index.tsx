@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import App from './app';
 import { AuthProvider } from './context/AuthContext';
-import { initSentry } from './lib/sentry';
+import { initSentry } from './utils/sentry';
 import { store } from './store';
 import GlobalStyle from './styles/global.style';
 

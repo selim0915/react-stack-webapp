@@ -2,9 +2,9 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import APIs from '../../apis';
-import { CommonTitle } from '../../styles/common.style';
+import { Button, Title } from '../../components/commons';
+import { RouteLink } from '../../routes/routes';
 import { NewsFeed } from '../../types/newFeed.type';
-import { RouteLink } from '../../utils/constants';
 
 export const FreeBoardList: React.FC = () => {
   const { page = '1' } = useParams();
@@ -90,7 +90,7 @@ export const FreeBoardList: React.FC = () => {
 
   return (
     <div>
-      <CommonTitle>자유게시판 목록</CommonTitle>
+      <Title>자유게시판 목록</Title>
 
       <div style={{ marginBottom: '20px' }}>
         <div style={{ marginTop: '10px', fontSize: '14px', color: '#666' }}>
@@ -112,7 +112,8 @@ export const FreeBoardList: React.FC = () => {
         }}
       >
         <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-          <button
+          <Button
+            type='button'
             onClick={() => navigate(RouteLink.FREE_BOARD.replace(':page', prevPage.toString()))}
             disabled={currentPage === 1}
             style={{
@@ -127,10 +128,11 @@ export const FreeBoardList: React.FC = () => {
             }}
           >
             이전
-          </button>
+          </Button>
 
           {Array.from({ length: lastPage }, (_, i) => (
-            <button
+            <Button
+              type='button'
               key={i + 1}
               onClick={() => navigate(RouteLink.FREE_BOARD.replace(':page', (i + 1).toString()))}
               style={{
@@ -149,10 +151,11 @@ export const FreeBoardList: React.FC = () => {
               }}
             >
               {i + 1}
-            </button>
+            </Button>
           ))}
 
-          <button
+          <Button
+            type='button'
             onClick={() => navigate(RouteLink.FREE_BOARD.replace(':page', nextPage.toString()))}
             disabled={currentPage === lastPage}
             style={{
@@ -167,7 +170,7 @@ export const FreeBoardList: React.FC = () => {
             }}
           >
             다음
-          </button>
+          </Button>
         </div>
       </div>
     </div>

@@ -7,7 +7,7 @@ module.exports = {
   },
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    project: './tsconfig.eslint.json',
+    project: path.join(__dirname, 'tsconfig.json'),
     tsconfigRootDir: __dirname,
   },
   extends: ['plugin:@typescript-eslint/recommended', 'airbnb', 'airbnb/hooks', 'prettier'],
@@ -74,5 +74,13 @@ module.exports = {
       },
     },
   },
-  ignorePatterns: ['.eslintrc.js', 'dist', 'test/**/*'],
+  ignorePatterns: [
+    '.eslintrc.js',
+    'babel.config.js',
+    'webpack.config.js',
+    'webpack.dev.config.js',
+    'server/**/*',
+    'dist',
+    'test/**/*',
+  ],
 };

@@ -1,6 +1,6 @@
 import * as Sentry from '@sentry/react';
 import React from 'react';
-import GlobalError from '../pages/error/GlobalError';
+import GlobalError from '../../pages/error/GlobalError';
 
 interface ErrorBoundaryProps {
   children: React.ReactNode;

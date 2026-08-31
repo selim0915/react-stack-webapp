@@ -1,5 +1,3 @@
-/* eslint-disable max-classes-per-file */
-/* eslint-disable no-undef */
 import { NewsDetail, NewsFeed } from '../../types/newFeed.type';
 
 export const NEWS_URL = 'https://api.hnpwa.com/v0/news/1.json';
