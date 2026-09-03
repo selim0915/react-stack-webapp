@@ -1,5 +1,5 @@
 {
-  "name": "npm-link-example",
+  "name": "b",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,6 +8,5 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "type": "commonjs"
+  "license": "ISC"
 }
