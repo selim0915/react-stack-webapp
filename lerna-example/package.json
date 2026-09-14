@@ -1,7 +1,9 @@
 {
   "name": "root",
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "nx": "^23.2.1"
+  },
   "devDependencies": {
     "lerna": "^10.0.1"
   }

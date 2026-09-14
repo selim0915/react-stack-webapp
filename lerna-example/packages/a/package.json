@@ -1,0 +1,25 @@
+{
+  "name": "a",
+  "version": "0.1.0",
+  "description": "> TODO: description",
+  "author": "Woongjae Lee <2woongjae@gmail.com>",
+  "homepage": "",
+  "license": "ISC",
+  "main": "lib/a.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "start": "node main.js",
+    "build": "echo \"build a\"",
+    "test": "node ./__tests__/a.test.js"
+  },
+  "dependencies": {
+    "b": "workspace:*"
+  },
+  "private": true
+}
