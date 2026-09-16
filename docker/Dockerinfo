@@ -1,2 +1,0 @@
-# docker build -t dp -f ../docker/Dockerfile ../
-# docker run -d -p 80:50001 --name dp-app dp

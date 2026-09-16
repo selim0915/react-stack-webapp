@@ -19,7 +19,7 @@
     "docs": "jsdoc -c jsdoc.config.json ."
   },
   "engines": {
-    "node": "20.x"
+    "node": ">=24"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
@@ -50,7 +50,6 @@
     "morgan": "^1.10.0",
     "react-redux": "^9.2.0",
     "redux": "^5.0.1",
-    "uuid": "^3.4.0",
     "web-vitals": "^1.0.1",
     "winston": "^3.17.0",
     "winston-daily-rotate-file": "^5.0.0",
@@ -101,8 +100,6 @@
     "webpack": "^5.89.0",
     "webpack-cli": "^5.1.4",
     "webpack-dev-middleware": "^7.4.2",
-    "webpack-dev-server": "^4.15.1",
-    "webpack-hot-middleware": "^2.26.1"
-  },
-  "packageManager": "pnpm@8.10.0+sha512.9c2cb83f2b6cf6a25d8c58300bf99197c7ef3be84cf3e766f29054b40b83b42f8aaba6fcc314a9ecf27c00f7ce80a757bb4c608800e7adbe2d29dc5c7056f5be"
+    "webpack-dev-server": "^4.15.1"
+  }
 }
