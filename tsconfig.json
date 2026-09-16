@@ -14,9 +14,9 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["front/src/*"]
+      "@/*": ["src/*"]
     }
   },
-  "include": ["front/src/**/*"],
+  "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"]
 }
