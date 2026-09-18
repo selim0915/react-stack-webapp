@@ -32,43 +32,15 @@ React 스택으로 구축된 현대적인 웹 애플리케이션입니다.
 
 <br />
 
-## 2. 프로젝트 설정
-
-### 2.1. 초기 설정
-#### 2.1.1. Node.js 환경 구성
-vercel build 하기 위해 node는 20.19.6 이상이 필요합니다.
-```bash
-$ nvm install 20.19.6
-$ nvm use 20.19.6
-$ node -v
-$ npm install
-```
-
-#### 2.1.2. 개발용 SSL 인증서 생성
-로컬 HTTPS 환경을 위해 `cert` 폴더에 인증서가 필요합니다.
-```bash
-$ mkdir cert
-$ openssl req -nodes -new -x509 -keyout cert/key.pem -out cert/cert.pem -days 365 -config cert/openssl.cnf
-```
-
-### 2.2. 실행 방법
-
-#### 2.2.1. Development
-프론트엔드와 백엔드를 각각 실행해야 합니다.
+## 2. 개발 환경 설정
 ```bash
 $ npm run dev 
 # https://localhost:4002
 ```
 ```bash
-$ npm run server:dev   # DB 포함 실행
-$ npm run server:no-db # DB 없이 실행
+$ npm run server:dev
+$ npm run client:dev
 # https://localhost:4000
-```
-
-#### 2.2.2. Production
-빌드와 서버 실행을 한 번에 수행합니다.
-```bash
-$ npm run start
 ```
 
 <br />

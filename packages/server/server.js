@@ -1,6 +1,5 @@
-require('dotenv').config();
-
 const path = require('path');
+require('dotenv').config({ path: path.resolve(__dirname, '.env') });
 const https = require('https');
 const express = require('express');
 const cors = require('cors');
@@ -10,11 +9,7 @@ if (process.env.USE_DB === 'true') {
   require('./config/db');
 }
 
-const webpack = require('webpack');
-const webpackDevMiddleware = require('webpack-dev-middleware');
-
 const IS_PROD = process.env.NODE_ENV === 'production';
-const webpackConfig = IS_PROD ? require('../webpack.config') : require('../webpack.dev.config');
 const { loadSSL } = require('./config/ssl');
 const logger = require('./config/winston');
 const setupWebSocket = require('./websocket');
@@ -38,7 +33,9 @@ const routes = require('./routes/product');
 
 routes.initialize(app);
 
-// webpack & frontend catch-all
+// 프론트엔드 라우팅 (SPA 지원)
+// 개발 시에는 webpack-dev-server(포트 4002)를 사용하므로, 
+// 여기서는 프로덕션 빌드(dist) 파일만 제공하면 됩니다.
 if (IS_PROD) {
   app.get('*', (_req, res, _next) => {
     res.sendFile(path.join(ROOT, 'index.html'), (err) => {
@@ -48,25 +45,9 @@ if (IS_PROD) {
     });
   });
 } else {
-  const compiler = webpack(webpackConfig);
-
-  app.use(
-    webpackDevMiddleware(compiler, {
-      publicPath: webpackConfig.output.publicPath,
-    }),
-  );
-
-  app.get('*', (req, res, next) => {
-    const filename = path.join(compiler.outputPath, 'index.html');
-    compiler.outputFileSystem.readFile(filename, (err, result) => {
-      if (err) {
-        return next(err);
-      }
-      res.set('content-type', 'text/html');
-      res.send(result);
-      res.end();
-      return null;
-    });
+  // 개발 환경에서는 API 서버 역할만 수행하며 프론트엔드는 제공하지 않음
+  app.get('/', (req, res) => {
+    res.send('API Server is running in development mode. Please use Webpack Dev Server (port 4002) for the frontend.');
   });
 }
 
