@@ -1,6 +1,9 @@
 import React from 'react';
-import { StyledFooter } from './layout.style';
 
-const Footer: React.FC = () => <StyledFooter>ⓒ 2025 woo. All rights reserved.</StyledFooter>;
+const Footer: React.FC = () => (
+    <footer className="w-auto h-[60px] border-t border-gray-200 box-border text-[12px] text-gray-500 bg-white flex items-center justify-center">
+      ⓒ 2025 woo. All rights reserved.
+    </footer>
+  );
 
 export default Footer;

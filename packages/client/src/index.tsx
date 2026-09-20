@@ -6,6 +6,7 @@ import App from './app';
 import { AuthProvider } from './context/AuthContext';
 import { initSentry } from './utils/sentry';
 import { store } from './store';
+import './styles/tailwind.css';
 import GlobalStyle from './styles/global.style';
 
 

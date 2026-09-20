@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import routeConfig from '../../routes/route.config';
 import { RouteMenuItem } from '../../types/core.type';
-import { StyledNav, StyledNavItem, StyledNavItemIink, StyledNavItemWrap } from './layout.style';
 
 const Nav: React.FC = () => {
   const { isLoggedIn, userRole } = useAuth();
@@ -23,17 +22,20 @@ const Nav: React.FC = () => {
   });
 
   return (
-    <StyledNav>
-      <StyledNavItemWrap>
+    <nav className="w-auto h-[50px] px-6 box-border flex items-center flex-wrap content-center border-b border-gray-200">
+      <ul className="m-0 p-0 list-none flex gap-5">
         {menuItems.map((item) => (
-          <StyledNavItem key={item.path}>
-            <StyledNavItemIink as={Link} to={item.path.replace(':page', '1')}>
+          <li key={item.path} className="m-0 p-0 min-w-[50px]">
+            <Link 
+              to={item.path.replace(':page', '1')} 
+              className="text-[14px] text-blue-600 hover:font-bold no-underline"
+            >
               {item.label}
-            </StyledNavItemIink>
-          </StyledNavItem>
+            </Link>
+          </li>
         ))}
-      </StyledNavItemWrap>
-    </StyledNav>
+      </ul>
+    </nav>
   );
 };
 
