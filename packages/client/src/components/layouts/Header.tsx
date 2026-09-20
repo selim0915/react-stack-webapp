@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { WordKey } from '../../constants/messages';
 import useAuth from '../../hooks/useAuth';
+import { ko as WordKey } from '../../locales';
 import { RouteLink } from '../../routes/routes';
 
 const Header: React.FC = () => {
@@ -16,12 +16,15 @@ const Header: React.FC = () => {
 
   return (
     <header className="sticky top-0 z-50 w-full h-[60px] px-6 box-border flex justify-between items-center bg-white/70 border-b border-black/5 font-sans">
-      <a 
-        onClick={() => navigate(RouteLink.MAIN)} 
-        className="text-[20px] font-bold tracking-[-0.5px] text-[#1d1d1f] no-underline transition-opacity duration-200 ease-in hover:opacity-70 cursor-pointer"
-      >
-        {WordKey.PROJECT_NAME}
-      </a>
+      <div className="flex">
+        <a 
+          onClick={() => navigate(RouteLink.MAIN)} 
+          className="text-[20px] font-bold tracking-[-0.5px] text-[#1d1d1f] no-underline transition-opacity duration-200 ease-in hover:opacity-70 cursor-pointer"
+          >
+          {WordKey.PROJECT_NAME}
+        </a>
+        <div>{WordKey.PROJECT_DESCRIPTION}</div>
+      </div>
 
       <div className="flex items-center gap-6">
         {userId ? (

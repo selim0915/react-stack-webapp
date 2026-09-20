@@ -71,6 +71,14 @@ export const routeConfig: RouteMenuItem[] = [
     layout: ['header', 'nav', 'footer'],
   },
   {
+    path: RouteLink.FREE_BOARD,
+    label: 'SNS',
+    element: FreeBoardList,
+    showInMenu: true,
+    authRequired: true,
+    layout: ['header', 'nav', 'footer'],
+  },
+  {
     path: RouteLink.FREE_BOARD_DETAIL,
     element: FreeBoardDetail,
     showInMenu: false,
