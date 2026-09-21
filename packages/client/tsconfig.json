@@ -1,20 +1,20 @@
 {
   "compilerOptions": {
+    "rootDir": "./src",
     "types": ["node"],
     "outDir": "./dist",
     "sourceMap": true,
-    "target": "es5",
+    "target": "ES2015",
     "module": "esnext",
     "jsx": "react-jsx",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "strict": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["./src/*"]
     }
   },
   "include": ["src/**/*"],
