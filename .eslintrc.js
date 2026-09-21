@@ -75,10 +75,11 @@ module.exports = {
   },
   ignorePatterns: [
     '.eslintrc.js',
-    'babel.config.js',
-    'webpack.config.js',
+    'postcss.config.js',
     'packages/server/**/*',
     'packages/client/dist',
     'test/**/*',
+    'tsconfig.json',
+    'webpack.config.js',
   ],
 };
