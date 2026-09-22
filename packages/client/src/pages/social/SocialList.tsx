@@ -1,20 +1,20 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import APIs from '../../apis';
-import { Button, Title } from '../../components/commons';
+import { NewsFeedApi } from './social.api';
+import { Button } from '../../components/commons';
 import { RouteLink } from '../../routes/routes';
 import { NewsFeed } from '../../types/newFeed.type';
 
-export const FreeBoardList: React.FC = () => {
+export const SocialList: React.FC = () => {
   const { page = '1' } = useParams();
   const currentPage = Number(page);
   const navigate = useNavigate();
 
   const { data: feeds = [] } = useQuery({
-    queryKey: ['freeboard', 'list'],
+    queryKey: ['Social', 'list'],
     queryFn: async () => {
-      const api = new APIs.Freeboard.NewsFeedApi();
+      const api = new NewsFeedApi();
       const data = await api.getData();
       // Add 'read' property as it was done previously
       return data.map((feed: NewsFeed) => ({ ...feed, read: false }));
@@ -47,7 +47,7 @@ export const FreeBoardList: React.FC = () => {
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <div style={{ flex: 1 }}>
             <Link
-              to={RouteLink.FREE_BOARD_DETAIL.replace(':id', feed.id.toString())}
+              to={RouteLink.SOCIAL_DETAIL.replace(':id', feed.id.toString())}
               style={{
                 fontSize: '18px',
                 fontWeight: '500',
@@ -90,7 +90,7 @@ export const FreeBoardList: React.FC = () => {
 
   return (
     <div>
-      <Title>자유게시판 목록</Title>
+      <h3 className="text-2xl font-bold text-gray-800 mb-6">소셜 목록</h3>
 
       <div style={{ marginBottom: '20px' }}>
         <div style={{ marginTop: '10px', fontSize: '14px', color: '#666' }}>
@@ -114,7 +114,7 @@ export const FreeBoardList: React.FC = () => {
         <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
           <Button
             type='button'
-            onClick={() => navigate(RouteLink.FREE_BOARD.replace(':page', prevPage.toString()))}
+            onClick={() => navigate(RouteLink.SOCIAL.replace(':page', prevPage.toString()))}
             disabled={currentPage === 1}
             style={{
               padding: '0 12px',
@@ -134,7 +134,7 @@ export const FreeBoardList: React.FC = () => {
             <Button
               type='button'
               key={i + 1}
-              onClick={() => navigate(RouteLink.FREE_BOARD.replace(':page', (i + 1).toString()))}
+              onClick={() => navigate(RouteLink.SOCIAL.replace(':page', (i + 1).toString()))}
               style={{
                 width: '32px',
                 height: '32px',
@@ -156,7 +156,7 @@ export const FreeBoardList: React.FC = () => {
 
           <Button
             type='button'
-            onClick={() => navigate(RouteLink.FREE_BOARD.replace(':page', nextPage.toString()))}
+            onClick={() => navigate(RouteLink.SOCIAL.replace(':page', nextPage.toString()))}
             disabled={currentPage === lastPage}
             style={{
               padding: '0 12px',
@@ -177,4 +177,4 @@ export const FreeBoardList: React.FC = () => {
   );
 };
 
-export default FreeBoardList;
+export default SocialList;

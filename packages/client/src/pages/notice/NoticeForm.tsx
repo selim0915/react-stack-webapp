@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { RouteLink } from '../../routes/routes';
-import { Button, Form, Input, Textarea, Title } from '../../components/commons';
+import { Button, Form, Input, Textarea } from '../../components/commons';
 import { UserRole } from '../../constants/app.config';
 import useAuth from '../../hooks/useAuth';
 import { formatDate } from '../../utils/format';
 
-interface Post {
+interface Notice {
   id: number;
   title: string;
   content: string;
@@ -25,18 +25,18 @@ const NoticeForm: React.FC = () => {
   useEffect(() => {
     if (id) {
       setIsEdit(true);
-      const savedPosts = localStorage.getItem('board_posts');
+      const savedPosts = localStorage.getItem('notice_notices');
       if (savedPosts) {
-        const posts = JSON.parse(savedPosts);
-        const post = posts.find((p: Post) => p.id === Number(id));
-        if (post) {
-          if (userId !== post.author && userRole !== UserRole.ADMIN) {
+        const notices = JSON.parse(savedPosts);
+        const notice = notices.find((p: Notice) => p.id === Number(id));
+        if (notice) {
+          if (userId !== notice.author && userRole !== UserRole.ADMIN) {
             alert('권한이 없습니다.');
             navigate(RouteLink.NOTICE);
             return;
           }
-          setTitle(post.title);
-          setContent(post.content);
+          setTitle(notice.title);
+          setContent(notice.content);
         }
       }
     } else {
@@ -50,30 +50,30 @@ const NoticeForm: React.FC = () => {
     e.preventDefault();
     if (!title || !content) return;
 
-    const savedPosts = localStorage.getItem('board_posts');
-    const posts = savedPosts ? JSON.parse(savedPosts) : [];
+    const savedPosts = localStorage.getItem('notice_notices');
+    const notices = savedPosts ? JSON.parse(savedPosts) : [];
 
     if (isEdit) {
-      const updatedPosts = posts.map((p: Post) => (p.id === Number(id) ? { ...p, title, content } : p));
-      localStorage.setItem('board_posts', JSON.stringify(updatedPosts));
+      const updatedPosts = notices.map((p: Notice) => (p.id === Number(id) ? { ...p, title, content } : p));
+      localStorage.setItem('notice_notices', JSON.stringify(updatedPosts));
       navigate(RouteLink.NOTICE_DETAIL.replace(':id', id || ''));
     } else {
       const newPost = {
-        id: posts.length > 0 ? Math.max(...posts.map((p: any) => p.id)) + 1 : 1,
+        id: notices.length > 0 ? Math.max(...notices.map((p: any) => p.id)) + 1 : 1,
         title,
         content,
         author: userId || '익명',
         createdAt: formatDate(new Date()),
       };
-      const updatedPosts = [newPost, ...posts];
-      localStorage.setItem('board_posts', JSON.stringify(updatedPosts));
+      const updatedPosts = [newPost, ...notices];
+      localStorage.setItem('notice_notices', JSON.stringify(updatedPosts));
       navigate(RouteLink.NOTICE);
     }
   };
 
   return (
     <div>
-      <Title>공지사항 {isEdit ? '수정' : '등록'}</Title>
+      <h3 className="text-2xl font-bold text-gray-800 mb-6">공지사항 {isEdit ? '수정' : '등록'}</h3>
 
       <Form onSubmit={handleSubmit} style={{ marginTop: '30px' }}>
         <Input placeholder="제목을 입력하세요" value={title} onChange={(e) => setTitle(e.target.value)} required />

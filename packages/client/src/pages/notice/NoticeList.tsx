@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Button, Table, TH, Title } from '../../components/commons';
+import { Button, Table, TH } from '../../components/commons';
 import { RouteLink } from '../../routes/routes';
 import { formatDate } from '../../utils/format';
 
-interface Post {
+interface Notice {
   id: number;
   title: string;
   author: string;
@@ -12,15 +12,15 @@ interface Post {
 }
 
 const NoticeList: React.FC = () => {
-  const [posts, setPosts] = useState<Post[]>([]);
+  const [notices, setNotices] = useState<Notice[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
   const navigate = useNavigate();
 
   useEffect(() => {
-    const savedPosts = localStorage.getItem('board_posts');
+    const savedPosts = localStorage.getItem('notice_notices');
     if (savedPosts) {
-      setPosts(JSON.parse(savedPosts));
+      setNotices(JSON.parse(savedPosts));
     } else {
       // Dummy data
       const dummyPosts = Array.from({ length: 25 }, (_, i) => ({
@@ -30,23 +30,23 @@ const NoticeList: React.FC = () => {
         author: 'admin',
         createdAt: formatDate(new Date()),
       })).reverse();
-      setPosts(dummyPosts);
-      localStorage.setItem('board_posts', JSON.stringify(dummyPosts));
+      setNotices(dummyPosts);
+      localStorage.setItem('notice_notices', JSON.stringify(dummyPosts));
     }
   }, []);
 
-  const totalPages = Math.ceil(posts.length / itemsPerPage);
+  const totalPages = Math.ceil(notices.length / itemsPerPage);
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = posts.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = notices.slice(indexOfFirstItem, indexOfLastItem);
 
   return (
     <div>
-      <Title>공지사항 목록</Title>
+      <h3 className="text-2xl font-bold text-gray-800 mb-6">공지사항 목록</h3>
 
       <div style={{ marginBottom: '20px' }}>
         <div style={{ marginTop: '10px', fontSize: '14px', color: '#666' }}>
-          총 게시글 <span style={{ color: '#0071e3', fontWeight: 'bold' }}>{posts.length}</span>개
+          총 게시글 <span style={{ color: '#0071e3', fontWeight: 'bold' }}>{notices.length}</span>개
         </div>
       </div>
 
@@ -60,14 +60,14 @@ const NoticeList: React.FC = () => {
           </tr>
         </thead>
         <tbody>
-          {currentItems.map((post) => (
-            <tr key={post.id}>
-              <td className="center">{post.id}</td>
+          {currentItems.map((notice) => (
+            <tr key={notice.id}>
+              <td className="center">{notice.id}</td>
               <td>
-                <Link to={RouteLink.NOTICE_DETAIL.replace(':id', post.id.toString())}>{post.title}</Link>
+                <Link to={RouteLink.NOTICE_DETAIL.replace(':id', notice.id.toString())}>{notice.title}</Link>
               </td>
-              <td className="center">{post.author}</td>
-              <td className="center">{post.createdAt}</td>
+              <td className="center">{notice.author}</td>
+              <td className="center">{notice.createdAt}</td>
             </tr>
           ))}
           {currentItems.length === 0 && (

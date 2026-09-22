@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Input, Title } from '../../components/commons';
+import { useNavigate } from 'react-router-dom';
+import { Button, Input } from '../../components/commons';
+import useAuth from '../../hooks/useAuth';
+import { RouteLink } from '../../routes/routes';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { updateUserInfo } from '../../store/slices/userSlice';
 
 const MyPage: React.FC = () => {
   const dispatch = useAppDispatch();
   const user = useAppSelector((state) => state.user);
+  const navigate = useNavigate();
+  const { logout: authLogout } = useAuth();
 
   // 로컬 상태 관리
   const [formData, setFormData] = useState({
@@ -54,11 +59,17 @@ const MyPage: React.FC = () => {
     return '-';
   };
 
+  const handleLogout = () => {
+    authLogout(() => {
+      navigate(RouteLink.MAIN);
+    });
+  };
+
   return (
     <div>
-      <Title>마이페이지</Title>
+      <h3 className="text-2xl font-bold text-gray-800 mb-6">마이페이지</h3>
 
-      <div style={{ maxWidth: '800px', marginTop: '30px' }}>
+      <div className="mt-[30px]">
         <form onSubmit={handleSubmit}>
           {/* 아이디 / 이름 섹션 */}
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '20px' }}>
@@ -90,6 +101,7 @@ const MyPage: React.FC = () => {
               <Input
                 type="text"
                 id="name"
+                name="name"
                 value={formData.name}
                 onChange={handleChange}
                 placeholder="이름을 입력하세요"
@@ -174,6 +186,7 @@ const MyPage: React.FC = () => {
               >
                 <input
                   type="checkbox"
+                  id="termsOfService"
                   name="termsOfService"
                   checked={formData.termsOfService}
                   onChange={handleChange}
@@ -188,6 +201,7 @@ const MyPage: React.FC = () => {
               >
                 <input
                   type="checkbox"
+                  id="privacyPolicy"
                   name="privacyPolicy"
                   checked={formData.privacyPolicy}
                   onChange={handleChange}
@@ -198,7 +212,10 @@ const MyPage: React.FC = () => {
             </div>
           </div>
 
-          <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', borderTop: '1px solid #eee', paddingTop: '30px' }}>
+            <Button type="button" onClick={handleLogout} style={{ width: 'auto', padding: '12px 30px', backgroundColor: '#ff3b30' }}>
+              로그아웃
+            </Button>
             <Button type="submit" style={{ width: 'auto', padding: '12px 30px' }}>
               저장
             </Button>

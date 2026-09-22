@@ -1,5 +1,5 @@
 import { ProductType } from '../../types/core.type';
-import api from '../api.instance';
+import api from '../../libs/axios';
 
 /**
  * Get all products

@@ -1,5 +1,5 @@
 import React, { createContext, useCallback, useMemo } from 'react';
-import APIs from '../apis';
+import * as UserAPI from '../pages/login/user.api';
 import { CookieKey } from '../constants/app.config';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { loginSuccess, logout as reduxLogout } from '../store/slices/userSlice';
@@ -63,7 +63,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       if (token && !isLoggedIn) {
         try {
           // 사용자 정보 API 호출 (토큰을 이용해 백엔드에서 정보 가져옴)
-          const userInfo = await APIs.User.getUserInfo();
+          const userInfo = await UserAPI.getUserInfo();
           dispatch(loginSuccess(userInfo));
         } catch (error) {
           console.error('Session restore failed:', error);

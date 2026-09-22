@@ -1,7 +1,6 @@
 ﻿import React from 'react';
 import ComingSoon from '../error/ComingSoon';
 
+const Terms: React.FC = () => <ComingSoon />;
 
-const Chat: React.FC = () => <ComingSoon />;
-
-export default Chat;
+export default Terms;

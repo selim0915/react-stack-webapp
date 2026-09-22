@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import APIs from '../../../apis';
-import { Title } from '../../../components/commons';
+import * as ProductAPI from '../product.api';
+
 import { RootState } from '../../../store';
 import { asyncIncrease, decrease, increase, setCounter } from '../../../store/slices/counterSlice';
 import { ProductType } from '../../../types/core.type';
@@ -29,7 +29,7 @@ const TestPage: React.FC = () => {
   };
 
   useEffect(() => {
-    APIs.Product.getProducts()
+    ProductAPI.getProducts()
       .then((data) => {
         setProductList(data);
       })
@@ -41,7 +41,7 @@ const TestPage: React.FC = () => {
 
   return (
     <>
-      <Title>API 테스트</Title>
+      <h3 className="text-2xl font-bold text-gray-800 mb-6">API 테스트</h3>
 
       <div>
         <p id="counter" className="text-2xl">

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Button, Form, Image, Input, InputHelperText } from '../../components/commons';
-import { LoginLayout } from '../../components/layouts/layout.style';
+import { Button, Form, Input, InputHelperText } from '../../components/commons';
 import { UserRole } from '../../constants/app.config';
 import useAuth from '../../hooks/useAuth';
 import { RouteLink } from '../../routes/routes';
@@ -15,7 +14,6 @@ const Login: React.FC = () => {
   const [msg, setMsg] = useState<string>('');
 
   React.useEffect(() => {
-    // 로그인 페이지에 진입하면 기존 쿠키 및 인증 상태 초기화
     authLogout();
   }, [authLogout]);
 
@@ -43,9 +41,9 @@ const Login: React.FC = () => {
   };
 
   return (
-    <LoginLayout>
+    <div className="w-full max-w-[480px] my-[100px] mx-auto flex flex-col items-center gap-[30px]">
       <Link to={RouteLink.MAIN}>
-        <Image src={sampeople} alt="logo" width={180} height={100} />
+        <img src={sampeople} alt="Logo" className="h-8 object-contain" />
       </Link>
 
       <Form onSubmit={login}>
@@ -55,7 +53,7 @@ const Login: React.FC = () => {
 
         <Button type="submit">로그인</Button>
       </Form>
-    </LoginLayout>
+    </div>
   );
 };
 

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Button, Title } from '../../components/commons';
+import { Button } from '../../components/commons';
 import { UserRole } from '../../constants/app.config';
 import useAuth from '../../hooks/useAuth';
 import { RouteLink } from '../../routes/routes';
 
-interface Post {
+interface Notice {
   id: number;
   title: string;
   content: string;
@@ -17,13 +17,13 @@ const NoticeDetail: React.FC = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { userId, userRole } = useAuth();
-  const [post, setPost] = useState<Post | null>(null);
+  const [post, setPost] = useState<Notice | null>(null);
 
   useEffect(() => {
-    const savedPosts = localStorage.getItem('board_posts');
+    const savedPosts = localStorage.getItem('notice_notices');
     if (savedPosts) {
-      const posts = JSON.parse(savedPosts);
-      const foundPost = posts.find((p: Post) => p.id === Number(id));
+      const notices = JSON.parse(savedPosts);
+      const foundPost = notices.find((p: Notice) => p.id === Number(id));
       if (foundPost) {
         setPost(foundPost);
       } else {
@@ -36,29 +36,29 @@ const NoticeDetail: React.FC = () => {
   const handleDelete = () => {
     if (!window.confirm('정말 삭제하시겠습니까?')) return;
 
-    const savedPosts = localStorage.getItem('board_posts');
+    const savedPosts = localStorage.getItem('notice_notices');
     if (savedPosts) {
-      const posts = JSON.parse(savedPosts);
-      const updatedPosts = posts.filter((p: Post) => p.id !== Number(id));
-      localStorage.setItem('board_posts', JSON.stringify(updatedPosts));
+      const notices = JSON.parse(savedPosts);
+      const updatedPosts = notices.filter((p: Notice) => p.id !== Number(id));
+      localStorage.setItem('notice_notices', JSON.stringify(updatedPosts));
       navigate(RouteLink.NOTICE);
     }
   };
 
-  if (!post) return <div>Loading...</div>;
+  if (!notice) return <div>Loading...</div>;
 
   return (
     <div>
-      <Title>공지사항 상세보기</Title>
+      <h3 className="text-2xl font-bold text-gray-800 mb-6">공지사항 상세보기</h3>
 
       <div style={{ borderBottom: '1px solid #eee', paddingBottom: '20px', marginBottom: '20px', marginTop: '30px' }}>
-        <h2 style={{ fontSize: '24px', fontWeight: '600' }}>{post.title}</h2>
+        <h2 style={{ fontSize: '24px', fontWeight: '600' }}>{notice.title}</h2>
         <div style={{ marginTop: '10px', color: '#86868b', fontSize: '14px' }}>
-          작성자 {post.author} | 작성일 {post.createdAt}
+          작성자 {notice.author} | 작성일 {notice.createdAt}
         </div>
       </div>
 
-      <div style={{ minHeight: '300px', whiteSpace: 'pre-wrap', lineHeight: '1.6' }}>{post.content}</div>
+      <div style={{ minHeight: '300px', whiteSpace: 'pre-wrap', lineHeight: '1.6' }}>{notice.content}</div>
 
       <div
         style={{ marginTop: '40px', display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: '10px' }}
@@ -70,10 +70,10 @@ const NoticeDetail: React.FC = () => {
           목록
         </Button>
 
-        {(userId === post.author || userRole === UserRole.ADMIN) && (
+        {(userId === notice.author || userRole === UserRole.ADMIN) && (
           <div style={{ display: 'flex', gap: '10px' }}>
             <Button
-              onClick={() => navigate(RouteLink.NOTICE_EDIT.replace(':id', post.id.toString()))}
+              onClick={() => navigate(RouteLink.NOTICE_EDIT.replace(':id', notice.id.toString()))}
               style={{ width: 'auto', padding: '10px 24px', backgroundColor: '#0071e3' }}
             >
               수정
