@@ -92,6 +92,7 @@ module.exports = {
         removeComments: true
       }
     }),
+    new MiniCssExtractPlugin(),
   ],
   optimization: {
     splitChunks: {
