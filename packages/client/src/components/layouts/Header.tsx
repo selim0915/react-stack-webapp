@@ -3,9 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import { ko as WordKey } from '../../locales';
 import { RouteLink } from '../../routes/routes';
 import { sampeople } from '../../utils/images';
+import useAuth from '../../hooks/useAuth';
 
 const Header: React.FC = () => {
   const navigate = useNavigate();
+  const { isLoggedIn } = useAuth();
 
   return (
     <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-sm bg-[#fafafa] border-b border-[#f1f3f5] h-[72px] flex items-center font-sans">
@@ -31,21 +33,33 @@ const Header: React.FC = () => {
             <option value="en">English (EN)</option>
           </select>
           
-          <button 
-            type="button"
-            onClick={() => navigate(RouteLink.SCHEDULE)} 
-            className="text-[15px] font-medium text-[#495057] hover:text-[#212529] transition-colors cursor-pointer bg-transparent border-none p-0"
-          >
-            마이페이지
-          </button>
-          
-          <button 
-            type="button"
-            onClick={() => navigate('/notifications')}
-            className="text-[15px] font-medium text-[#495057] hover:text-[#212529] transition-colors cursor-pointer flex items-center gap-1 bg-transparent border-none p-0"
-          >
-            알림
-          </button>
+          {isLoggedIn ? (
+            <>
+              <button 
+                type="button"
+                onClick={() => navigate(RouteLink.MYPAGE)} 
+                className="text-[15px] font-medium text-[#495057] hover:text-[#212529] transition-colors cursor-pointer bg-transparent border-none p-0"
+              >
+                마이페이지
+              </button>
+              
+              <button 
+                type="button"
+                onClick={() => navigate(RouteLink.NOTIFICATIONS)}
+                className="text-[15px] font-medium text-[#495057] hover:text-[#212529] transition-colors cursor-pointer flex items-center gap-1 bg-transparent border-none p-0"
+              >
+                알림
+              </button>
+            </>
+          ) : (
+            <button 
+              type="button"
+              onClick={() => navigate(RouteLink.LOGIN)} 
+              className="text-[14px] font-semibold text-white bg-[#0071e3] hover:bg-[#0077ED] transition-colors cursor-pointer border-none rounded-full px-5 py-2"
+            >
+              로그인
+            </button>
+          )}
         </div>
         
       </div>

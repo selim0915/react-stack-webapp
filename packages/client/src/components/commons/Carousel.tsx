@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
 const images = [
-  'https://picsum.photos/id/1018/1200/400',
-  'https://picsum.photos/id/1015/1200/400',
+  'https://picsum.photos/id/1018/1200/300',
+  'https://picsum.photos/id/1015/1200/300',
   'https://picsum.photos/id/1019/1200/400',
 ];
 
@@ -26,7 +26,7 @@ const Carousel: React.FC = () => {
   };
 
   return (
-    <div className="relative w-full h-[400px] overflow-hidden rounded-2xl shadow-md mb-8 group">
+    <div className="relative w-full h-[300px] overflow-hidden rounded-2xl shadow-md mb-8 group">
       {/* 슬라이드 이미지 영역 */}
       <div 
         className="flex transition-transform duration-700 ease-in-out h-full"

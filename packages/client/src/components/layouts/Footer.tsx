@@ -10,6 +10,8 @@ const Footer: React.FC = () => {
           <React.Fragment key={menu.path}>
             <Link 
               to={menu.path} 
+              target="_blank"
+              rel="noopener noreferrer"
               className={`hover:underline cursor-pointer ${menu.label === '개인정보처리방침' ? 'font-bold text-[#1e1e23]' : ''}`}
             >
               {menu.label}

@@ -1,6 +1,10 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Button } from '../../components/commons';
 
 const ComingSoon: React.FC = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="flex flex-col items-center justify-center py-32 text-center w-full">
       {/* 둥근 배경과 아이콘 */}
@@ -14,10 +18,19 @@ const ComingSoon: React.FC = () => {
       </h2>
       
       {/* 안내 문구 */}
-      <p className="text-[#888888] text-[16px] leading-relaxed">
+      <p className="text-[#888888] text-[16px] leading-relaxed mb-10">
         본 페이지는 현재 업데이트 준비중에 있습니다.<br />
         빠른 시일내에 찾아뵙겠습니다.
       </p>
+
+      {/* 뒤로가기 버튼 */}
+      <Button 
+        type="button" 
+        onClick={() => navigate(-1)} 
+        style={{ width: 'auto', padding: '12px 32px' }}
+      >
+        이전 화면으로
+      </Button>
     </div>
   );
 };

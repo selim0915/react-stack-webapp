@@ -1,9 +1,12 @@
 node_modules/
 dist/
 .env
+.env.*
+!.env.example
 logs/
 .eslintcache
 .parcel-cache/
 out/
 $$*
 cert/
+ 
