@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button, Input } from '../../components/commons';
 import useAuth from '../../hooks/useAuth';
@@ -67,8 +67,6 @@ const MyPage: React.FC = () => {
 
   return (
     <div>
-      <h3 className="text-2xl font-bold text-gray-800 mb-6">마이페이지</h3>
-
       <div className="mt-[30px]">
         <form onSubmit={handleSubmit}>
           {/* 아이디 / 이름 섹션 */}
@@ -227,3 +225,4 @@ const MyPage: React.FC = () => {
 };
 
 export default MyPage;
+

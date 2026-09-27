@@ -5,6 +5,7 @@ export interface MenuType {
   path: string;
   authRequired: boolean;
   roles?: string[];
+  subMenus?: MenuType[];
 }
 
 // 1Depth 메인 네비게이션 메뉴
@@ -12,7 +13,17 @@ export const MainMenus: MenuType[] = [
   { label: '뉴스', path: RouteLink.NEWS, authRequired: false },
   { label: '게시글', path: RouteLink.POSTS, authRequired: false },
   { label: '소셜', path: RouteLink.SOCIAL.replace(':page', '1'), authRequired: true },
-  { label: '미니 도구', path: RouteLink.TOOLS, authRequired: false },
+  { 
+    label: '미니 도구', 
+    path: RouteLink.TOOLS, 
+    authRequired: false,
+    subMenus: [
+      { label: '룰렛', path: RouteLink.TOOLS_ROULETTE, authRequired: false },
+      { label: '정산하기', path: RouteLink.TOOLS_SETTLEMENT, authRequired: false },
+      { label: '카운트다운', path: RouteLink.TOOLS_COUNTDOWN, authRequired: false },
+      { label: '주변조회(지도)', path: RouteLink.TOOLS_MAP, authRequired: false },
+    ]
+  },
   { label: '채팅', path: RouteLink.CHAT.replace('/*', ''), authRequired: true },
   
   // 관리자 전용 메뉴 (ADMIN 권한이 있는 유저에게만 보임)
@@ -27,6 +38,6 @@ export const MainMenus: MenuType[] = [
 // 하단 푸터 네비게이션 메뉴
 export const FooterMenus: MenuType[] = [
   { label: '공지사항', path: RouteLink.NOTICE, authRequired: false },
-  { label: 'FAQ', path: '/faq', authRequired: false },
-  { label: '이용약관', path: '/terms', authRequired: false },
+  { label: 'FAQ', path: RouteLink.FAQ, authRequired: false },
+  { label: '이용약관', path: RouteLink.TERMS, authRequired: false },
 ];

@@ -1,4 +1,4 @@
-/* eslint-disable jsx-a11y/control-has-associated-label */
+﻿/* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable no-shadow */
 import { useQuery } from '@tanstack/react-query';
 import React, { useEffect } from 'react';
@@ -61,8 +61,6 @@ const SocialDetail: React.FC = () => {
 
   return (
     <div>
-      <h3 className="text-2xl font-bold text-gray-800 mb-6">소셜 상세보기</h3>
-
       <div style={{ borderBottom: '1px solid #eee', paddingBottom: '20px', marginBottom: '20px', marginTop: '30px' }}>
         <h2 style={{ fontSize: '24px', fontWeight: '600', color: '#1d1d1f' }}>{title}</h2>
       </div>
@@ -99,3 +97,4 @@ const SocialDetail: React.FC = () => {
 };
 
 export default SocialDetail;
+

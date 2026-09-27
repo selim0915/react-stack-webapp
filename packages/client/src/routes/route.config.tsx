@@ -28,6 +28,7 @@ import NoticeList from '../pages/notice/NoticeList';
 import SocialDetail from '../pages/social/SocialDetail';
 import SocialList from '../pages/social/SocialList';
 import Tools from '../pages/tools';
+import Countdown from '../pages/tools/Countdown';
 
 import FAQ from '../pages/faq';
 import Notifications from '../pages/notifications';
@@ -46,6 +47,10 @@ export const routeConfig: RouteObject[] = [
       { path: RouteLink.SOCIAL, element: <ProtectedRoute authRequired={true}><SocialList /></ProtectedRoute> },
       { path: RouteLink.SOCIAL_DETAIL, element: <ProtectedRoute authRequired={true}><SocialDetail /></ProtectedRoute> },
       { path: RouteLink.TOOLS, element: <Tools /> },
+      { path: RouteLink.TOOLS_ROULETTE, element: <ComingSoon /> },
+      { path: RouteLink.TOOLS_SETTLEMENT, element: <ComingSoon /> },
+      { path: RouteLink.TOOLS_COUNTDOWN, element: <Countdown /> },
+      { path: RouteLink.TOOLS_MAP, element: <ComingSoon /> },
       { path: RouteLink.CHAT, element: <ProtectedRoute authRequired={true}><Chat /></ProtectedRoute> },
 
       // 마이페이지

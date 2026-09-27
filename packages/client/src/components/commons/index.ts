@@ -5,3 +5,4 @@ export * from './InputHelperText';
 export * from './Shell';
 export * from './Table';
 export * from './Textarea';
+export * from './PageTitle';

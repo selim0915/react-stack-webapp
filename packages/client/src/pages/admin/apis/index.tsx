@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as ProductAPI from '../product.api';
 
@@ -41,8 +41,6 @@ const TestPage: React.FC = () => {
 
   return (
     <>
-      <h3 className="text-2xl font-bold text-gray-800 mb-6">API 테스트</h3>
-
       <div>
         <p id="counter" className="text-2xl">
           {count}
@@ -103,3 +101,4 @@ const TestPage: React.FC = () => {
 };
 
 export default TestPage;
+

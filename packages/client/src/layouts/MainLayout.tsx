@@ -4,6 +4,7 @@ import Header from '../components/layouts/Header';
 import Nav from '../components/layouts/Nav';
 import Footer from '../components/layouts/Footer';
 import FAB from '../components/commons/FAB';
+import { PageTitle } from '../components/commons/PageTitle';
 
 const MainLayout: React.FC = () => {
   return (
@@ -12,6 +13,7 @@ const MainLayout: React.FC = () => {
       <Nav />
       <div className="w-full flex-1 flex flex-col">
         <section className="max-w-7xl mx-auto w-full flex-1 px-8 py-8 box-border">
+          <PageTitle />
           <Outlet />
         </section>
         <Footer />

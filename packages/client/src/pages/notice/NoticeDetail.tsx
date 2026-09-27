@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Button } from '../../components/commons';
 import { UserRole } from '../../constants/app.config';
@@ -49,8 +49,6 @@ const NoticeDetail: React.FC = () => {
 
   return (
     <div>
-      <h3 className="text-2xl font-bold text-gray-800 mb-6">공지사항 상세보기</h3>
-
       <div style={{ borderBottom: '1px solid #eee', paddingBottom: '20px', marginBottom: '20px', marginTop: '30px' }}>
         <h2 style={{ fontSize: '24px', fontWeight: '600' }}>{notice.title}</h2>
         <div style={{ marginTop: '10px', color: '#86868b', fontSize: '14px' }}>
@@ -89,3 +87,4 @@ const NoticeDetail: React.FC = () => {
 };
 
 export default NoticeDetail;
+

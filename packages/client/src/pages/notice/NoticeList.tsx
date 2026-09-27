@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button, Table, TH } from '../../components/commons';
 import { RouteLink } from '../../routes/routes';
@@ -42,8 +42,6 @@ const NoticeList: React.FC = () => {
 
   return (
     <div>
-      <h3 className="text-2xl font-bold text-gray-800 mb-6">공지사항 목록</h3>
-
       <div style={{ marginBottom: '20px' }}>
         <div style={{ marginTop: '10px', fontSize: '14px', color: '#666' }}>
           총 게시글 <span style={{ color: '#0071e3', fontWeight: 'bold' }}>{notices.length}</span>개
@@ -163,3 +161,4 @@ const NoticeList: React.FC = () => {
 };
 
 export default NoticeList;
+

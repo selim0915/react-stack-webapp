@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { RouteLink } from '../../routes/routes';
 import { Button, Form, Input, Textarea } from '../../components/commons';
@@ -73,8 +73,6 @@ const NoticeForm: React.FC = () => {
 
   return (
     <div>
-      <h3 className="text-2xl font-bold text-gray-800 mb-6">공지사항 {isEdit ? '수정' : '등록'}</h3>
-
       <Form onSubmit={handleSubmit} style={{ marginTop: '30px' }}>
         <Input placeholder="제목을 입력하세요" value={title} onChange={(e) => setTitle(e.target.value)} required />
         <Textarea
@@ -106,3 +104,4 @@ const NoticeForm: React.FC = () => {
 };
 
 export default NoticeForm;
+

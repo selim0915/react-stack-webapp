@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+﻿import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { NewsFeedApi } from './social.api';
@@ -90,8 +90,6 @@ export const SocialList: React.FC = () => {
 
   return (
     <div>
-      <h3 className="text-2xl font-bold text-gray-800 mb-6">소셜 목록</h3>
-
       <div style={{ marginBottom: '20px' }}>
         <div style={{ marginTop: '10px', fontSize: '14px', color: '#666' }}>
           총 게시글 <span style={{ color: '#0071e3', fontWeight: 'bold' }}>{feeds.length}</span>개
@@ -178,3 +176,4 @@ export const SocialList: React.FC = () => {
 };
 
 export default SocialList;
+
