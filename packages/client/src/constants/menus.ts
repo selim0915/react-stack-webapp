@@ -12,7 +12,7 @@ export interface MenuType {
 export const MainMenus: MenuType[] = [
   { label: '뉴스', path: RouteLink.NEWS, authRequired: false },
   { label: '게시글', path: RouteLink.POSTS, authRequired: false },
-  { label: '소셜', path: RouteLink.SOCIAL.replace(':page', '1'), authRequired: true },
+  { label: '소셜', path: RouteLink.SOCIAL.replace(':page', '1'), authRequired: false },
   { 
     label: '미니 도구', 
     path: RouteLink.TOOLS, 
@@ -24,7 +24,7 @@ export const MainMenus: MenuType[] = [
       { label: '주변조회(지도)', path: RouteLink.TOOLS_MAP, authRequired: false },
     ]
   },
-  { label: '채팅', path: RouteLink.CHAT.replace('/*', ''), authRequired: true },
+  { label: '채팅', path: RouteLink.CHAT.replace('/*', ''), authRequired: false },
   
   // 관리자 전용 메뉴 (ADMIN 권한이 있는 유저에게만 보임)
 // 관리자 전용 메뉴 (ADMIN 권한이 있는 유저에게만 보임)

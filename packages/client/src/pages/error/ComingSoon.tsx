@@ -6,7 +6,7 @@ const ComingSoon: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="flex flex-col items-center justify-center py-32 text-center w-full">
+    <div className="flex flex-col items-center justify-center flex-1 h-full text-center w-full min-h-[400px]">
       {/* 둥근 배경과 아이콘 */}
       <div className="w-36 h-36 bg-[#eeeeee] rounded-full flex items-center justify-center mb-10">
         <i className="fas fa-tools text-[70px] text-white"></i>
