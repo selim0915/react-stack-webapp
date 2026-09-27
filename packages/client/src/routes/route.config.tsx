@@ -18,6 +18,7 @@ import Chat from '../pages/chat';
 import ComingSoon from '../pages/error/ComingSoon';
 import Forbidden from '../pages/error/Forbidden';
 import NotFound from '../pages/error/NotFound';
+import FAQ from '../pages/faq';
 import Login from '../pages/login';
 import Main from '../pages/main';
 import Mypage from '../pages/mypage';
@@ -25,14 +26,12 @@ import News from '../pages/news';
 import NoticeDetail from '../pages/notice/NoticeDetail';
 import NoticeForm from '../pages/notice/NoticeForm';
 import NoticeList from '../pages/notice/NoticeList';
+import Notifications from '../pages/notifications';
 import SocialDetail from '../pages/social/SocialDetail';
 import SocialList from '../pages/social/SocialList';
+import Terms from '../pages/terms';
 import Tools from '../pages/tools';
 import Countdown from '../pages/tools/Countdown';
-
-import FAQ from '../pages/faq';
-import Notifications from '../pages/notifications';
-import Terms from '../pages/terms';
 
 /**
  * Route Object Configuration (React Router v6 style)
@@ -44,43 +43,43 @@ export const routeConfig: RouteObject[] = [
       { path: RouteLink.MAIN, element: <Main /> },
       { path: RouteLink.NEWS, element: <News /> }, 
       { path: RouteLink.POSTS, element: <Board /> },
-      { path: RouteLink.SOCIAL, element: <ProtectedRoute authRequired={true}><SocialList /></ProtectedRoute> },
-      { path: RouteLink.SOCIAL_DETAIL, element: <ProtectedRoute authRequired={true}><SocialDetail /></ProtectedRoute> },
+      { path: RouteLink.SOCIAL, element: <SocialList /> },
+      { path: RouteLink.SOCIAL_DETAIL, element: <SocialDetail /> },
       { path: RouteLink.TOOLS, element: <Tools /> },
+      { path: RouteLink.TOOLS_COUNTDOWN, element: <Countdown /> },
       { path: RouteLink.TOOLS_ROULETTE, element: <ComingSoon /> },
       { path: RouteLink.TOOLS_SETTLEMENT, element: <ComingSoon /> },
-      { path: RouteLink.TOOLS_COUNTDOWN, element: <Countdown /> },
       { path: RouteLink.TOOLS_MAP, element: <ComingSoon /> },
-      { path: RouteLink.CHAT, element: <ProtectedRoute authRequired={true}><Chat /></ProtectedRoute> },
+      { path: RouteLink.CHAT, element: <Chat /> },
 
       // 마이페이지
-      { path: RouteLink.MYPAGE, element: <ProtectedRoute authRequired={true} roles={[UserRole.USER, UserRole.ADMIN]}><Mypage /></ProtectedRoute> },
-      { path: RouteLink.NOTIFICATIONS, element: <Notifications /> },
+      { path: RouteLink.MYPAGE, element: <ProtectedRoute authRequired roles={[UserRole.USER, UserRole.ADMIN]}><Mypage /></ProtectedRoute> },
+      { path: RouteLink.NOTIFICATIONS, element: <ProtectedRoute authRequired roles={[UserRole.USER, UserRole.ADMIN]}><Notifications /></ProtectedRoute> },
       
       // 관리자페이지
       {
         path: RouteLink.ADMIN,
-        element: <ProtectedRoute authRequired={true} roles={[UserRole.ADMIN]}><Dashboard /></ProtectedRoute>,
+        element: <ProtectedRoute authRequired roles={[UserRole.ADMIN]}><Dashboard /></ProtectedRoute>,
       },
       {
         path: RouteLink.ADMIN_DASHBOARD,
-        element: <ProtectedRoute authRequired={true} roles={[UserRole.ADMIN]}><Dashboard /></ProtectedRoute>,
+        element: <ProtectedRoute authRequired roles={[UserRole.ADMIN]}><Dashboard /></ProtectedRoute>,
       },
       {
         path: RouteLink.ADMIN_MEMBERS,
-        element: <ProtectedRoute authRequired={true} roles={[UserRole.ADMIN]}><MemberManagement /></ProtectedRoute>,
+        element: <ProtectedRoute authRequired roles={[UserRole.ADMIN]}><MemberManagement /></ProtectedRoute>,
       },
       {
         path: RouteLink.ADMIN_POSTS,
-        element: <ProtectedRoute authRequired={true} roles={[UserRole.ADMIN]}><PostManagement /></ProtectedRoute>,
+        element: <ProtectedRoute authRequired roles={[UserRole.ADMIN]}><PostManagement /></ProtectedRoute>,
       },
       {
         path: RouteLink.ADMIN_SYSTEM,
-        element: <ProtectedRoute authRequired={true} roles={[UserRole.ADMIN]}><SystemManagement /></ProtectedRoute>,
+        element: <ProtectedRoute authRequired roles={[UserRole.ADMIN]}><SystemManagement /></ProtectedRoute>,
       },
       {
         path: RouteLink.ADMIN_APIS,
-        element: <ProtectedRoute authRequired={true} roles={[UserRole.ADMIN]}><ApiManagement /></ProtectedRoute>,
+        element: <ProtectedRoute authRequired roles={[UserRole.ADMIN]}><ApiManagement /></ProtectedRoute>,
       },
     ]
   },
@@ -91,14 +90,8 @@ export const routeConfig: RouteObject[] = [
       { path: RouteLink.TERMS, element: <Terms /> },
       { path: RouteLink.NOTICE, element: <NoticeList /> },
       { path: RouteLink.NOTICE_DETAIL, element: <NoticeDetail /> },
-      { 
-        path: RouteLink.NOTICE_WRITE, 
-        element: <ProtectedRoute authRequired={true}><NoticeForm /></ProtectedRoute> 
-      },
-      { 
-        path: RouteLink.NOTICE_EDIT, 
-        element: <ProtectedRoute authRequired={true}><NoticeForm /></ProtectedRoute> 
-      },
+      { path: RouteLink.NOTICE_WRITE, element: <ProtectedRoute authRequired><NoticeForm /></ProtectedRoute> },
+      { path: RouteLink.NOTICE_EDIT,  element: <ProtectedRoute authRequired><NoticeForm /></ProtectedRoute> },
     ]
   },
   {

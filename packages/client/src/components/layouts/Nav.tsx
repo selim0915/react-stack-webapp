@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Link } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import { MainMenus, MenuType } from '../../constants/menus';
@@ -19,8 +19,8 @@ const Nav: React.FC = () => {
   });
 
   return (
-    <nav className="sticky top-[72px] z-40 w-full h-[50px] bg-[#fafafa] bg-white/95 backdrop-blur-sm border-b border-gray-200">
-      <div className="max-w-7xl mx-auto w-full px-8 h-full flex items-center justify-center">
+    <nav className="sticky top-[var(--header-height)] z-40 w-full h-[50px] bg-[#fafafa] bg-white/95 backdrop-blur-sm border-b border-gray-200">
+      <div className="max-w-[var(--content-width)] mx-auto w-full px-8 h-full flex items-center justify-center">
         <ul className="m-0 p-0 list-none flex gap-10">
           {menuItems.map((item) => (
             <li key={item.path} className="m-0 p-0 relative group">
@@ -57,3 +57,5 @@ const Nav: React.FC = () => {
 };
 
 export default Nav;
+
+

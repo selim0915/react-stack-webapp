@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ko as WordKey } from '../../locales';
 import { RouteLink } from '../../routes/routes';
@@ -10,8 +10,8 @@ const Header: React.FC = () => {
   const { isLoggedIn } = useAuth();
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-sm bg-[#fafafa] border-b border-[#f1f3f5] h-[72px] flex items-center font-sans">
-      <div className="max-w-7xl mx-auto w-full px-8 flex justify-between items-center">
+    <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-sm bg-[#fafafa] border-b border-[#f1f3f5] h-[var(--header-height)] flex items-center font-sans">
+      <div className="max-w-[var(--content-width)] mx-auto w-full px-8 flex justify-between items-center">
         
         {/* 왼쪽 로고 영역 */}
         <button 
@@ -68,3 +68,5 @@ const Header: React.FC = () => {
 };
 
 export default Header;
+
+

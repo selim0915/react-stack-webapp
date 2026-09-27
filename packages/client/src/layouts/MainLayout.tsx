@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Outlet } from 'react-router-dom';
 import Header from '../components/layouts/Header';
 import Nav from '../components/layouts/Nav';
@@ -12,7 +12,7 @@ const MainLayout: React.FC = () => {
       <Header />
       <Nav />
       <div className="w-full flex-1 flex flex-col">
-        <section className="max-w-7xl mx-auto w-full flex-1 px-8 py-8 box-border">
+        <section className="max-w-[var(--content-width)] mx-auto w-full flex-1 px-8 py-8 box-border">
           <PageTitle />
           <Outlet />
         </section>
@@ -24,3 +24,5 @@ const MainLayout: React.FC = () => {
 };
 
 export default MainLayout;
+
+
