@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button, Form, Input, InputHelperText } from '../../components/commons';
-import { UserRole } from '../../constants/app.config';
+import { UserRole } from '../../utils/constants';
 import useAuth from '../../hooks/useAuth';
 import { RouteLink } from '../../routes/routes';
 import { sampeople } from '../../utils/images';
@@ -66,3 +66,4 @@ const Login: React.FC = () => {
 };
 
 export default Login;
+

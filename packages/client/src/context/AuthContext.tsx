@@ -1,6 +1,6 @@
-import React, { createContext, useCallback, useMemo } from 'react';
+﻿import React, { createContext, useCallback, useMemo } from 'react';
 import * as UserAPI from '../pages/login/user.api';
-import { CookieKey } from '../constants/app.config';
+import { CookieKey } from '../utils/constants';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { loginSuccess, logout as reduxLogout } from '../store/slices/userSlice';
 import { deleteAllCookies, getCookie, setCookie } from '../utils/cookie';
@@ -91,3 +91,4 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
+

@@ -2,7 +2,7 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import { RouteLink } from '../../routes/routes';
 import { Button, Form, Input, Textarea } from '../../components/commons';
-import { UserRole } from '../../constants/app.config';
+import { UserRole } from '../../utils/constants';
 import useAuth from '../../hooks/useAuth';
 import { formatDate } from '../../utils/format';
 
@@ -104,4 +104,5 @@ const NoticeForm: React.FC = () => {
 };
 
 export default NoticeForm;
+
 

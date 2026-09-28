@@ -1,8 +1,11 @@
 import React from 'react';
-import { useLocation, matchPath } from 'react-router-dom';
+import { matchPath, useLocation } from 'react-router-dom';
 import { RouteLink } from '../../routes/routes';
 
 const getPageTitle = (pathname: string): string | null => {
+  if (matchPath({ path: RouteLink.SIGNUP }, pathname)) return '회원가입';
+  if (matchPath({ path: RouteLink.FIND_ID }, pathname)) return '아이디 찾기';
+  if (matchPath({ path: RouteLink.FIND_PW }, pathname)) return '비밀번호 찾기';
   if (matchPath({ path: RouteLink.NEWS }, pathname)) return '뉴스';
   if (matchPath({ path: RouteLink.POSTS }, pathname)) return '게시글';
   if (matchPath({ path: RouteLink.SOCIAL }, pathname)) return '소셜 목록';

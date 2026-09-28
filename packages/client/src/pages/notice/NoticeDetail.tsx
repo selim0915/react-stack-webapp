@@ -1,7 +1,7 @@
 ﻿import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Button } from '../../components/commons';
-import { UserRole } from '../../constants/app.config';
+import { UserRole } from '../../utils/constants';
 import useAuth from '../../hooks/useAuth';
 import { RouteLink } from '../../routes/routes';
 
@@ -87,4 +87,5 @@ const NoticeDetail: React.FC = () => {
 };
 
 export default NoticeDetail;
+
 

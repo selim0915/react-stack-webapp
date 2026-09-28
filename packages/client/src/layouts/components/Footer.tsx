@@ -1,12 +1,14 @@
-﻿import React from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { FooterMenus } from '../../constants/menus';
+import { getFooterMenus } from '../../utils/menus';
 
 const Footer: React.FC = () => {
+  const footerMenus = getFooterMenus();
+
   return (
     <footer className="w-full bg-[#fafafa] border-t border-[#e4e8eb] py-8 mt-auto">
       <div className="max-w-[var(--content-width)] mx-auto px-8 flex flex-wrap justify-center items-center gap-x-2 gap-y-4 text-[13px] text-[#424242]">
-        {FooterMenus.map((menu, index) => (
+        {footerMenus.map((menu, index) => (
           <React.Fragment key={menu.path}>
             <Link 
               to={menu.path} 
@@ -16,7 +18,7 @@ const Footer: React.FC = () => {
             >
               {menu.label}
             </Link>
-            {index < FooterMenus.length - 1 && (
+            {index < footerMenus.length - 1 && (
               <span className="text-[#d7dce0] mx-1 text-[11px]">|</span>
             )}
           </React.Fragment>
@@ -32,5 +34,6 @@ const Footer: React.FC = () => {
 };
 
 export default Footer;
+
 
 

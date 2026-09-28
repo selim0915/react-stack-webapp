@@ -1,7 +1,7 @@
 ﻿import React from 'react';
 import { Outlet } from 'react-router-dom';
-import Header from '../components/layouts/Header';
-import Footer from '../components/layouts/Footer';
+import Header from './components/Header';
+import Footer from './components/Footer';
 import FAB from '../components/commons/FAB';
 import { PageTitle } from '../components/commons/PageTitle';
 
@@ -22,6 +22,7 @@ const HeaderFooterLayout: React.FC = () => {
 };
 
 export default HeaderFooterLayout;
+
 
 
 

@@ -1,10 +1,10 @@
-import React from 'react';
+﻿import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import App from './app';
 import { AuthProvider } from './context/AuthContext';
-import { initSentry } from './utils/sentry';
+import { initSentry } from './libs/sentry';
 import { store } from './store';
 import './styles/tailwind.css';
 import GlobalStyle from './styles/global.style';
@@ -30,3 +30,4 @@ if (rootElement) {
     </Provider>,
   );
 }
+

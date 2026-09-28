@@ -1,12 +1,12 @@
-﻿import React from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
-import { MainMenus, MenuType } from '../../constants/menus';
+import { getMainMenus, MenuType } from '../../utils/menus';
 
 const Nav: React.FC = () => {
   const { isLoggedIn, userRole } = useAuth();
 
-  const menuItems: MenuType[] = MainMenus.filter((menu) => {
+  const menuItems: MenuType[] = getMainMenus().filter((menu) => {
     // 1. 비로그인 상태일 때: 인증이 필요한 메뉴는 숨김
     if (!isLoggedIn && menu.authRequired) return false;
 
@@ -57,5 +57,6 @@ const Nav: React.FC = () => {
 };
 
 export default Nav;
+
 
 
