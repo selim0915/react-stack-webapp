@@ -18,8 +18,6 @@ export const useAccess = () => {
     return 'AUTHORIZED';
   }, [isLoggedIn, userRole, currentRoute]);
 
-  // Redirection is now handled by ProtectedRoute component
-
   return {
     currentRoute,
     hasAccess: getStatus() === 'AUTHORIZED',

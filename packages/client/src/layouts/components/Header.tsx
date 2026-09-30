@@ -10,7 +10,7 @@ const Header: React.FC = () => {
   const { isLoggedIn } = useAuth();
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-sm bg-[#fafafa] border-b border-[#f1f3f5] h-[var(--header-height)] flex items-center font-sans">
+    <header className="sticky top-0 z-50 w-full backdrop-blur-sm bg-[#fafafa] border-b border-[#e4e8eb] h-[var(--header-height)] flex items-center font-sans">
       <div className="max-w-[var(--content-width)] mx-auto w-full px-8 flex justify-between items-center">
         
         {/* 왼쪽 로고 영역 */}

@@ -1,6 +1,6 @@
 import * as Sentry from '@sentry/react';
 import React from 'react';
-import GlobalError from '../../pages/error/GlobalError';
+import ErrorPage from '../../pages/error';
 
 interface ErrorBoundaryProps {
   children: React.ReactNode;
@@ -8,9 +8,9 @@ interface ErrorBoundaryProps {
 
 const ErrorBoundary: React.FC<ErrorBoundaryProps> = ({ children }) => (
   <Sentry.ErrorBoundary
-    fallback={<GlobalError />}
+    fallback={<ErrorPage type="500" />}
     onError={(error) => {
-      console.log('ErrorBoundary caught an error:', error);
+      console.error('ErrorBoundary caught an error:', error);
     }}
   >
     {children}

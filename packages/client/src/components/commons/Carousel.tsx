@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const images = [
   'https://picsum.photos/id/1018/1200/300',
@@ -6,7 +6,11 @@ const images = [
   'https://picsum.photos/id/1019/1200/400',
 ];
 
-const Carousel: React.FC = () => {
+interface CarouselProps {
+  hasConsent?: boolean;
+}
+
+const Carousel: React.FC<CarouselProps> = ({ hasConsent }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   // 자동 슬라이드
@@ -32,18 +36,27 @@ const Carousel: React.FC = () => {
         className="flex transition-transform duration-700 ease-in-out h-full"
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
       >
-        {images.map((src, index) => (
-          <img 
-            key={index}
-            src={src} 
-            alt={`Slide ${index + 1}`} 
-            className="w-full h-full object-cover flex-shrink-0"
-          />
-        ))}
+        {images.map((src, index) => {
+          const key = `${index}_img`;
+          return (
+            <div key={key} className="w-full h-full flex-shrink-0">
+              {hasConsent ? (
+                <img 
+                  src={src} 
+                  alt={`Slide ${index + 1}`} 
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <div className="w-full h-full bg-gray-200 flex items-center justify-center text-gray-300">{index+1}</div>
+              )}
+            </div>
+          )
+        })}
       </div>
 
       {/* 왼쪽 버튼 */}
       <button 
+        type="button"
         onClick={goToPrevious}
         className="absolute top-1/2 left-4 -translate-y-1/2 bg-black/20 hover:bg-black/50 text-white w-10 h-10 flex items-center justify-center rounded-full opacity-0 group-hover:opacity-100 transition-all cursor-pointer"
       >
@@ -52,23 +65,29 @@ const Carousel: React.FC = () => {
       
       {/* 오른쪽 버튼 */}
       <button 
+        type="button"
         onClick={goToNext}
         className="absolute top-1/2 right-4 -translate-y-1/2 bg-black/20 hover:bg-black/50 text-white w-10 h-10 flex items-center justify-center rounded-full opacity-0 group-hover:opacity-100 transition-all cursor-pointer"
       >
         &#10095;
       </button>
 
-      {/* 하단 인디케이터 (점) */}
+      {/* 하단 인디케이터 */}
       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-        {images.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setCurrentIndex(index)}
-            className={`w-2.5 h-2.5 rounded-full transition-colors cursor-pointer ${
-              currentIndex === index ? 'bg-white' : 'bg-white/40 hover:bg-white/70'
-            }`}
-          />
-        ))}
+        {images.map((_, index) => {
+          const key = `${index}_btn`;
+          return (
+            <button
+              key={key}
+              type="button"
+              aria-label="하단 인디케이터"
+              onClick={() => setCurrentIndex(index)}
+              className={`w-2.5 h-2.5 rounded-full transition-colors cursor-pointer ${
+                currentIndex === index ? 'bg-white' : 'bg-gray-300'
+              }`}
+            />
+          )
+          })}
       </div>
     </div>
   );

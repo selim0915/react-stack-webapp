@@ -2,12 +2,11 @@ import { Action, configureStore, Middleware, ThunkAction } from '@reduxjs/toolki
 import counterReducer from './slices/counterSlice';
 import newsReducer from './slices/newsSlice';
 import userReducer from './slices/userSlice';
+import uiReducer from './slices/uiSlice';
 
 // Existing local middlewares migrated to Redux
 const resetCountMiddleware: Middleware = (_store) => (next) => (action: any) => {
   if (action.type === 'counter/setCounter') {
-    // Note: In real Redux, mutating action like this is possible but not recommended.
-    // However, keeping the original logic:
     return next({ ...action, payload: 100 });
   }
   return next(action);
@@ -27,6 +26,7 @@ export const store = configureStore({
     counter: counterReducer,
     news: newsReducer,
     user: userReducer,
+    ui: uiReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(resetCountMiddleware, loggerMiddleware),
 });

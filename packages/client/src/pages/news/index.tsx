@@ -1,6 +1,7 @@
 ﻿import React from 'react';
-import ComingSoon from '../error/ComingSoon';
+import { ComingSoon } from '../../components/commons';
 
 const News: React.FC = () => <ComingSoon />;
 
 export default News;
+

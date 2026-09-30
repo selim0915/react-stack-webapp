@@ -1,6 +1,7 @@
 ﻿import React from 'react';
-import ComingSoon from '../error/ComingSoon';
+import { ComingSoon } from '../../components/commons';
 
 const FINDPW: React.FC = () => <ComingSoon />;
 
 export default FINDPW;
+

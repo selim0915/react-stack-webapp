@@ -1,7 +1,6 @@
 ﻿import React from 'react';
 import { ComingSoon } from '../../components/commons';
 
-const FINDID: React.FC = () => <ComingSoon />;
+const Map: React.FC = () => <ComingSoon />;
 
-export default FINDID;
-
+export default Map;

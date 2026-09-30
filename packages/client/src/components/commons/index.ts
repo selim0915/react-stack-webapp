@@ -6,3 +6,5 @@ export * from './Shell';
 export * from './Table';
 export * from './Textarea';
 export * from './PageTitle';
+export * from './Modal';
+export * from './ComingSoon';

@@ -27,7 +27,7 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ authRequired, roles, ch
 
   // 3. 권한(Role) 체크가 필요한 경우
   if (roles && !roles.includes(userRole || '')) {
-    return <Navigate to={RouteLink.FORBIDDEN} replace />;
+    return <Navigate to="/error?type=403" replace />;
   }
 
   return children as React.ReactElement;

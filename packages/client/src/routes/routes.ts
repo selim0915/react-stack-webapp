@@ -4,10 +4,10 @@ export const RouteLink = {
   SIGNUP: '/signup',
   FIND_ID: '/find-id',
   FIND_PW: '/find-pw',
-  SOCIAL: '/social/:page',
-  SOCIAL_DETAIL: '/social/show/:id',
   NEWS: '/news',
   POSTS: '/post',
+  SOCIAL: '/social/:page',
+  SOCIAL_DETAIL: '/social/show/:id',
   TOOLS: '/tools',
   TOOLS_ROULETTE: '/tools/roulette',
   TOOLS_SETTLEMENT: '/tools/settlement',
@@ -29,7 +29,6 @@ export const RouteLink = {
   ADMIN_SYSTEM: '/admin/system',
   ADMIN_APIS: '/admin/apis',
   ADMIN_TEST: '/admin/test',
-  FORBIDDEN: '/forbidden',
   DEFAULT: '*',
 };
 

@@ -1,21 +1,21 @@
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import ErrorBoundary from './components/providers/ErrorBoundary';
-import GoogleAnalytics from './components/providers/GoogleAnalytics';
-import AppRouter from './routes/AppRouter';
+import AuthInitializer from './components/providers/AuthInitializer';
+import { routeConfig } from './routes/route.config';
+
+const router = createBrowserRouter(routeConfig, {
+  basename: '/',
+  future: {
+    v7_relativeSplatPath: true,
+  },
+});
 
 const App: React.FC = () => (
   <ErrorBoundary>
-    <Router
-      basename="/"
-      future={{
-        v7_relativeSplatPath: true,
-        v7_startTransition: true,
-      }}
-    >
-      <GoogleAnalytics />
-      <AppRouter />
-    </Router>
+    <AuthInitializer>
+      <RouterProvider router={router} future={{ v7_startTransition: true }} />
+    </AuthInitializer>
   </ErrorBoundary>
 );
 
