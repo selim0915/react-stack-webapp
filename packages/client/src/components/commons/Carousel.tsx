@@ -30,7 +30,7 @@ const Carousel: React.FC<CarouselProps> = ({ hasConsent }) => {
   };
 
   return (
-    <div className="relative w-full h-[300px] overflow-hidden rounded-2xl shadow-md mb-8 group">
+    <div className="relative w-full h-[400px] overflow-hidden bg-[var(--ui-color-border)] mb-8 group">
       {/* 슬라이드 이미지 영역 */}
       <div 
         className="flex transition-transform duration-700 ease-in-out h-full"
@@ -47,7 +47,7 @@ const Carousel: React.FC<CarouselProps> = ({ hasConsent }) => {
                   className="w-full h-full object-cover"
                 />
               ) : (
-                <div className="w-full h-full bg-gray-200 flex items-center justify-center text-gray-300">{index+1}</div>
+                <div className="w-full h-full bg-[var(--ui-color-border)] flex items-center justify-center text-[var(--ui-color-secondary)]"></div>
               )}
             </div>
           )

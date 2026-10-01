@@ -37,13 +37,14 @@ const Main: React.FC = () => {
 
   return (
     <div className="w-full">
-      <div className="w-full">
+      {/* Full-bleed Carousel using w-screen and negative margin/left offset */}
+      <div className="w-screen relative left-1/2 -translate-x-1/2 -mt-8">
         <Carousel hasConsent={hasConsent} />
       </div>
       
       <div className="text-center mt-12 mb-16">
-        <h3 className="text-3xl font-bold text-gray-800 mb-4">{ko.PROJECT_NAME}</h3>
-        <p className="text-lg text-gray-600 mb-6">{ko.PROJECT_DESCRIPTION}</p>
+        <h3 className="text-3xl font-bold text-[var(--ui-color-primary)] mb-10">{ko.PROJECT_NAME}</h3>
+        <p className="text-base text-[var(--ui-color-secondary)] mb-6 w-[500px] mx-auto break-keep leading-relaxed whitespace-pre-wrap">{ko.PROJECT_DESCRIPTION}</p>
       </div>
 
       <Modal
