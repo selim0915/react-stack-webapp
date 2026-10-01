@@ -19,7 +19,6 @@ import FindPw from '../pages/findpw';
 import Login from '../pages/login';
 import Main from '../pages/main';
 import Mypage from '../pages/mypage';
-import News from '../pages/news';
 import NoticeDetail from '../pages/notice/NoticeDetail';
 import NoticeForm from '../pages/notice/NoticeForm';
 import NoticeList from '../pages/notice/NoticeList';
@@ -55,11 +54,6 @@ export const routeConfig: RouteObject[] = [
           element: <MainLayout />,
           children: [
             { path: RouteLink.MAIN, element: <Main /> },
-            { 
-              path: RouteLink.NEWS, 
-              element: <News />,
-              handle: { label: '뉴스', isMainMenu: true, authRequired: false }
-            }, 
             { 
               path: RouteLink.POSTS, 
               element: <Board />,
