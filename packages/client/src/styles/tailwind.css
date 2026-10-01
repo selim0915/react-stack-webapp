@@ -4,7 +4,29 @@
 
 @layer base {
   :root {
+    /* Layout */
     --header-height: 60px;
+    --submenu-height: 50px;
     --content-width: 1280px;
+    --footer-height: 80px;
+
+    /* Base Color */
+    --ui-b-color-black: #000000;
+    --ui-b-color-white: #ffffff;
+    --ui-b-color-red: #cc1717;
+    --ui-b-color-gray-100: #e5e7eb;
+    --ui-b-color-gray-200: #e5e7eb; /* Added to resolve missing gray-200 */
+    --ui-b-color-gray-500: #6b7280;
+    --ui-b-color-gray-900: #1f2937;
+    --ui-b-color-blue: #3b82f6;
+
+    /* Semantic  Colors */
+    --ui-color-primary: var(--ui-b-color-blue);
+    --ui-color-secondary: var(--ui-b-color-gray-500);
+    --ui-color-error: var(--ui-b-color-red);
+    --ui-color-background: var(--ui-b-color-white);
+    --ui-color-foreground: var(--ui-b-color-gray-200);
+    --ui-color-text: var(--ui-b-color-gray-900);
+    --ui-color-border: var(--ui-b-color-gray-100);
   }
 }

@@ -6,11 +6,21 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        primary: 'var(--ui-color-primary)',
+        secondary: 'var(--ui-color-secondary)',
+        error: 'var(--ui-color-error)',
+        background: 'var(--ui-color-background)',
+        foreground: 'var(--ui-color-foreground)',
+        text: 'var(--ui-color-text)',
+        border: 'var(--ui-color-border)',
+      },
       spacing: {
-        'header': '60px',
+        'header': 'var(--header-height)',
+        'submenu': 'var(--submenu-height)',
       },
       maxWidth: {
-        'content': '1280px',
+        'content': 'var(--content-width)',
       }
     },
   },
