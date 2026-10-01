@@ -1,9 +1,9 @@
-﻿import React from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ko as WordKey } from '../../locales';
 import { RouteLink } from '../../routes/routes';
-import { sampeople } from '../../utils/images';
+import { logo } from '../../assets';
 import useAuth from '../../hooks/useAuth';
+import Nav from './Nav';
 
 const Header: React.FC = () => {
   const navigate = useNavigate();
@@ -19,7 +19,6 @@ const Header: React.FC = () => {
           onClick={() => navigate(RouteLink.MAIN)} 
           className="cursor-pointer flex items-center transition-opacity hover:opacity-80 bg-transparent border-none p-0"
         >
-          <img src={sampeople} alt="Logo" className="h-8 object-contain" width={100} />
         </button>
 
         {/* 오른쪽 텍스트 메뉴 영역 */}
@@ -58,6 +57,7 @@ const Header: React.FC = () => {
               className="text-[14px] font-semibold text-white bg-[#0071e3] hover:bg-[#0077ED] transition-colors cursor-pointer border-none rounded-full px-5 py-2"
             >
               로그인
+              <img src={logo} alt="Logo" className="w-[100px] object-contain" />
             </button>
           )}
         </div>

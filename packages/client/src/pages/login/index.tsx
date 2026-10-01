@@ -1,10 +1,10 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button, Form, Input, InputHelperText } from '../../components/commons';
 import { UserRole } from '../../utils/constants';
 import useAuth from '../../hooks/useAuth';
 import { RouteLink } from '../../routes/routes';
-import { sampeople } from '../../utils/images';
+import { logo } from '../../assets';
 
 const Login: React.FC = () => {
   const { login: authLogin, logout: authLogout } = useAuth();
@@ -43,7 +43,7 @@ const Login: React.FC = () => {
   return (
     <div className="w-full max-w-[480px] my-[100px] mx-auto flex flex-col items-center gap-[30px]">
       <Link to={RouteLink.MAIN}>
-        <img src={sampeople} alt="Logo" className="h-8 object-contain" />
+        <img src={logo} alt="logo" className="w-[100px] object-contain" />
       </Link>
 
       <Form onSubmit={login}>
