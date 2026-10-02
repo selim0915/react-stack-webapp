@@ -22,8 +22,9 @@ import NoticeDetail from '../pages/notice/NoticeDetail';
 import NoticeForm from '../pages/notice/NoticeForm';
 import NoticeList from '../pages/notice/NoticeList';
 import Notifications from '../pages/notifications';
-import Post from '../pages/post';
+import PostLayout from '../pages/post';
 import PostDetail from '../pages/post/PostDetail';
+import PostList from '../pages/post/PostList';
 import Signup from '../pages/signup';
 import SocialDetail from '../pages/social/SocialDetail';
 import SocialList from '../pages/social/SocialList';
@@ -56,11 +57,14 @@ export const routeConfig: RouteObject[] = [
           children: [
             { path: RouteLink.MAIN, element: <Main /> },
             { 
-              path: RouteLink.POSTS, 
-              element: <Post />,
-              handle: { label: '게시글', isMainMenu: true, authRequired: false }
+              path: RouteLink.POSTS,
+              element: <PostLayout />,
+              handle: { label: '게시글', isMainMenu: true, authRequired: false },
+              children: [
+                { index: true, element: <PostList /> },
+                { path: ':id', element: <PostDetail /> }
+              ]
             },
-            { path: RouteLink.POST_DETAIL, element: <PostDetail /> },
             { 
               path: RouteLink.SOCIAL, 
               element: <SocialList />,
@@ -149,4 +153,5 @@ export const routeConfig: RouteObject[] = [
     ]
   }
 ];
+
 

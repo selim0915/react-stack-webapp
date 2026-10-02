@@ -36,17 +36,17 @@ const PostDetail: React.FC = () => {
           onClick={() => navigate(RouteLink.POSTS)}
           className="px-6 py-2 bg-[var(--ui-color-primary)] text-white rounded-lg hover:opacity-90 transition-opacity"
         >
-          목록으로 돌아가기
+          목록
         </button>
       </div>
     );
   }
 
   return (
-    <div className="w-full py-8">
+    <div className="w-full">
       {/* Header section */}
       <div className="border-b border-[var(--ui-color-border)] pb-6 mb-8">
-        <h2 className="text-3xl font-bold text-[var(--ui-color-text)] mb-4">{post.title}</h2>
+        <h2 className="text-[20px] font-bold text-[var(--ui-color-text)] mb-4">{post.title}</h2>
         <div className="flex items-center justify-between text-sm text-[var(--ui-color-secondary)]">
           <div className="flex items-center gap-4">
             <span className="flex items-center gap-1 font-medium">
@@ -88,7 +88,7 @@ const PostDetail: React.FC = () => {
             <img src={post.thumbnail} alt={post.title} className="max-h-[500px] object-contain" />
           </div>
         )}
-        <div className="text-lg text-[var(--ui-color-text)] leading-loose whitespace-pre-wrap">
+        <div className="text-[var(--ui-color-text)] leading-loose whitespace-pre-wrap">
           {post.content}
         </div>
       </div>
@@ -100,7 +100,7 @@ const PostDetail: React.FC = () => {
           onClick={() => navigate(RouteLink.POSTS)}
           className="px-8 py-3 bg-[var(--ui-color-background)] border border-[var(--ui-color-border)] text-[var(--ui-color-text)] rounded-lg font-medium hover:bg-gray-50 transition-colors shadow-sm"
         >
-          목록으로
+          목록
         </button>
       </div>
     </div>
