@@ -1,18 +1,17 @@
 import React from 'react';
 import { RouteObject } from 'react-router-dom';
-import RootWrapper from '../layouts/RootWrapper';
-import ErrorPage from '../pages/error';
 import ProtectedRoute from '../components/providers/ProtectedRoute';
 import HeaderFooterLayout from '../layouts/HeaderFooterLayout';
 import MainLayout from '../layouts/MainLayout';
+import RootWrapper from '../layouts/RootWrapper';
 import SimpleLayout from '../layouts/SimpleLayout';
 import ApiManagement from '../pages/admin/apis';
 import Dashboard from '../pages/admin/dashboard';
 import MemberManagement from '../pages/admin/members';
 import PostManagement from '../pages/admin/posts';
 import SystemManagement from '../pages/admin/system';
-import Board from '../pages/board';
 import Chat from '../pages/chat';
+import ErrorPage from '../pages/error';
 import FAQ from '../pages/faq';
 import FindId from '../pages/findid';
 import FindPw from '../pages/findpw';
@@ -23,6 +22,7 @@ import NoticeDetail from '../pages/notice/NoticeDetail';
 import NoticeForm from '../pages/notice/NoticeForm';
 import NoticeList from '../pages/notice/NoticeList';
 import Notifications from '../pages/notifications';
+import Post from '../pages/post';
 import Signup from '../pages/signup';
 import SocialDetail from '../pages/social/SocialDetail';
 import SocialList from '../pages/social/SocialList';
@@ -56,7 +56,7 @@ export const routeConfig: RouteObject[] = [
             { path: RouteLink.MAIN, element: <Main /> },
             { 
               path: RouteLink.POSTS, 
-              element: <Board />,
+              element: <Post />,
               handle: { label: '게시글', isMainMenu: true, authRequired: false }
             },
             { 
@@ -147,6 +147,3 @@ export const routeConfig: RouteObject[] = [
     ]
   }
 ];
-
-export default routeConfig;
-
