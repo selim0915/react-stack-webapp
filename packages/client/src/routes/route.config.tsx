@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { RouteObject } from 'react-router-dom';
 import ProtectedRoute from '../components/providers/ProtectedRoute';
 import HeaderFooterLayout from '../layouts/HeaderFooterLayout';
@@ -23,6 +23,7 @@ import NoticeForm from '../pages/notice/NoticeForm';
 import NoticeList from '../pages/notice/NoticeList';
 import Notifications from '../pages/notifications';
 import Post from '../pages/post';
+import PostDetail from '../pages/post/PostDetail';
 import Signup from '../pages/signup';
 import SocialDetail from '../pages/social/SocialDetail';
 import SocialList from '../pages/social/SocialList';
@@ -59,6 +60,7 @@ export const routeConfig: RouteObject[] = [
               element: <Post />,
               handle: { label: '게시글', isMainMenu: true, authRequired: false }
             },
+            { path: RouteLink.POST_DETAIL, element: <PostDetail /> },
             { 
               path: RouteLink.SOCIAL, 
               element: <SocialList />,
@@ -147,3 +149,4 @@ export const routeConfig: RouteObject[] = [
     ]
   }
 ];
+

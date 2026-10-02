@@ -5,6 +5,7 @@ export const RouteLink = {
   FIND_ID: '/find-id',
   FIND_PW: '/find-pw',
   POSTS: '/post',
+  POST_DETAIL: '/post/:id',
   SOCIAL: '/social/:page',
   SOCIAL_DETAIL: '/social/show/:id',
   TOOLS: '/tools',

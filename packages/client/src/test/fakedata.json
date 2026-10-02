@@ -8,6 +8,7 @@
       "createdAt": "8 hours ago",
       "likes": 692,
       "comments": 332,
+      "views": 1520,
       "thumbnail": null
     },
     {
@@ -18,6 +19,7 @@
       "createdAt": "10월 1일",
       "likes": 45,
       "comments": 12,
+      "views": 310,
       "thumbnail": "https://picsum.photos/id/1011/160/100"
     },
     {
@@ -28,6 +30,7 @@
       "createdAt": "9월 28일",
       "likes": 128,
       "comments": 56,
+      "views": 890,
       "thumbnail": "https://picsum.photos/id/1012/160/100"
     },
     {
@@ -38,6 +41,7 @@
       "createdAt": "9월 25일",
       "likes": 312,
       "comments": 89,
+      "views": 1205,
       "thumbnail": null
     },
     {
@@ -48,6 +52,7 @@
       "createdAt": "9월 20일",
       "likes": 56,
       "comments": 34,
+      "views": 432,
       "thumbnail": "https://picsum.photos/id/1015/160/100"
     },
     {
@@ -58,6 +63,7 @@
       "createdAt": "9월 18일",
       "likes": 88,
       "comments": 21,
+      "views": 612,
       "thumbnail": null
     },
     {
@@ -68,6 +74,7 @@
       "createdAt": "9월 15일",
       "likes": 420,
       "comments": 156,
+      "views": 2540,
       "thumbnail": "https://picsum.photos/id/1016/160/100"
     },
     {
@@ -78,6 +85,7 @@
       "createdAt": "9월 10일",
       "likes": 150,
       "comments": 45,
+      "views": 789,
       "thumbnail": null
     },
     {
@@ -88,6 +96,7 @@
       "createdAt": "9월 5일",
       "likes": 234,
       "comments": 92,
+      "views": 1056,
       "thumbnail": "https://picsum.photos/id/1018/160/100"
     },
     {
@@ -98,6 +107,7 @@
       "createdAt": "9월 1일",
       "likes": 890,
       "comments": 245,
+      "views": 5302,
       "thumbnail": "https://picsum.photos/id/1020/160/100"
     },
     {
@@ -108,6 +118,7 @@
       "createdAt": "8월 25일",
       "likes": 76,
       "comments": 18,
+      "views": 321,
       "thumbnail": null
     },
     {
@@ -118,6 +129,7 @@
       "createdAt": "8월 20일",
       "likes": 112,
       "comments": 33,
+      "views": 510,
       "thumbnail": "https://picsum.photos/id/1022/160/100"
     },
     {
@@ -128,6 +140,7 @@
       "createdAt": "8월 15일",
       "likes": 205,
       "comments": 87,
+      "views": 943,
       "thumbnail": null
     },
     {
@@ -138,6 +151,7 @@
       "createdAt": "8월 10일",
       "likes": 340,
       "comments": 120,
+      "views": 1890,
       "thumbnail": "https://picsum.photos/id/1024/160/100"
     },
     {
@@ -148,6 +162,7 @@
       "createdAt": "8월 5일",
       "likes": 65,
       "comments": 15,
+      "views": 256,
       "thumbnail": null
     }
   ]
