@@ -5,7 +5,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const isProduction = process.env.NODE_ENV === 'production';
-const srcPath = path.resolve(__dirname, 'src');
 
 module.exports = {
   mode: isProduction ? 'production' : 'development',
@@ -19,7 +18,8 @@ module.exports = {
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
     alias: {
-      '@': srcPath,
+      'firebaseApp': path.resolve(__dirname, 'src/libs/firebaseApp'),
+      '@': path.resolve(__dirname, 'src'),
     },
   },
   devtool: isProduction ? false : 'source-map',
@@ -83,6 +83,12 @@ module.exports = {
       'process.env.NODE_ENV': JSON.stringify(isProduction ? 'production' : 'development'),
       'process.env.SENTRY_DSN': JSON.stringify(process.env.SENTRY_DSN),
       'process.env.GA_MEASUREMENT_ID': JSON.stringify(process.env.GA_MEASUREMENT_ID),
+      'process.env.REACT_APP_API_KEY': JSON.stringify(process.env.REACT_APP_API_KEY),
+      'process.env.REACT_APP_AUTH_DOMAIN': JSON.stringify(process.env.REACT_APP_AUTH_DOMAIN),
+      'process.env.REACT_APP_PROJECT_ID': JSON.stringify(process.env.REACT_APP_PROJECT_ID),
+      'process.env.REACT_APP_STORAGE_BUCKET': JSON.stringify(process.env.REACT_APP_STORAGE_BUCKET),
+      'process.env.REACT_APP_MESSAGING_SENDER_ID': JSON.stringify(process.env.REACT_APP_MESSAGING_SENDER_ID),
+      'process.env.REACT_APP_APP_ID': JSON.stringify(process.env.REACT_APP_APP_ID),
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
