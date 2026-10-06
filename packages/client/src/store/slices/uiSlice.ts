@@ -8,6 +8,10 @@ export interface UIState {
     title: string;
     content: string;
   };
+  toast: {
+    isVisible: boolean;
+    message: string;
+  };
 }
 
 const initialState: UIState = {
@@ -17,6 +21,10 @@ const initialState: UIState = {
     isOpen: false,
     title: '',
     content: '',
+  },
+  toast: {
+    isVisible: false,
+    message: '',
   },
 };
 
@@ -46,8 +54,15 @@ const uiSlice = createSlice({
       state.modal.title = '';
       state.modal.content = '';
     },
+    showToast: (state, action: PayloadAction<string>) => {
+      state.toast.message = action.payload;
+      state.toast.isVisible = true;
+    },
+    hideToast: (state) => {
+      state.toast.isVisible = false;
+    },
   },
 });
 
-export const { toggleDarkMode, setDarkMode, toggleMenu, setMenuOpen, openModal, closeModal } = uiSlice.actions;
+export const { toggleDarkMode, setDarkMode, toggleMenu, setMenuOpen, openModal, closeModal, showToast, hideToast } = uiSlice.actions;
 export default uiSlice.reducer;
