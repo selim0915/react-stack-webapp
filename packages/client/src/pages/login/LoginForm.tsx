@@ -3,17 +3,16 @@ import React, { useState } from 'react';
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Button, Form, Input } from '../../components/commons';
+import useAuth from '../../hooks/useAuth';
 import { app } from "../../libs/firebaseApp";
 import RouteLink from '../../routes/routes';
 import { showToast } from "../../store/slices/uiSlice";
-
-import useAuth from '../../hooks/useAuth';
 import { UserRole } from '../../utils/constants';
 
 const LoginForm: React.FC = () => {
-  const { login: authLogin } = useAuth();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { login: authLogin } = useAuth();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
@@ -22,18 +21,6 @@ const LoginForm: React.FC = () => {
     e.preventDefault();
 
     try {
-      // 테스트 계정 우회 (Firebase 인증 생략)
-      if (email === 'test@co.kr') {
-        const role = UserRole.USER;
-        const accessToken = 'abcdefg';
-        
-        authLogin('test@co.kr', role, accessToken);
-        dispatch(showToast("테스트 계정으로 로그인했습니다!"));
-        navigate(RouteLink.MAIN);
-        return;
-      }
-
-      // Firebase 인증
       const auth = getAuth(app);
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const token = await userCredential.user.getIdToken();
@@ -51,9 +38,7 @@ const LoginForm: React.FC = () => {
   };
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const {
-      target: { name, value },
-    } = e;
+    const { target: { name, value } } = e;
 
     if (name === "email") {
       setEmail(value);

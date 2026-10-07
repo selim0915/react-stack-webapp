@@ -1,7 +1,7 @@
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import ErrorBoundary from './components/providers/ErrorBoundary';
-import AuthInitializer from './components/providers/AuthInitializer';
+import AuthProvider from './components/providers/AuthProvider';
 import { routeConfig } from './routes/route.config';
 
 const router = createBrowserRouter(routeConfig, {
@@ -13,9 +13,9 @@ const router = createBrowserRouter(routeConfig, {
 
 const App: React.FC = () => (
   <ErrorBoundary>
-    <AuthInitializer>
+    <AuthProvider>
       <RouterProvider router={router} future={{ v7_startTransition: true }} />
-    </AuthInitializer>
+    </AuthProvider>
   </ErrorBoundary>
 );
 

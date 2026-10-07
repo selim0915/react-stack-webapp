@@ -1,6 +1,5 @@
-﻿import React from 'react';
+import React from 'react';
 import { RouteObject } from 'react-router-dom';
-import ProtectedRoute from '../components/providers/ProtectedRoute';
 import HeaderFooterLayout from '../layouts/HeaderFooterLayout';
 import MainLayout from '../layouts/MainLayout';
 import RootWrapper from '../layouts/RootWrapper';
@@ -35,6 +34,7 @@ import MapTool from '../pages/tools/Map';
 import Roulette from '../pages/tools/Roulette';
 import Settlement from '../pages/tools/Settlement';
 import { UserRole } from '../utils/constants';
+import RequireAuth from './RequireAuth';
 import { RouteLink } from './routes';
 
 export interface RouteMenuHandle {
@@ -71,6 +71,7 @@ export const routeConfig: RouteObject[] = [
               handle: { label: '소셜', isMainMenu: true, authRequired: false, linkPath: RouteLink.SOCIAL.replace(':page', '1') }
             },
             { path: RouteLink.SOCIAL_DETAIL, element: <SocialDetail /> },
+            { path: RouteLink.CHAT, element: <Chat />, handle: { label: '채팅', isMainMenu: true, authRequired: false, linkPath: RouteLink.CHAT.replace('/*', '') }},
             { 
               path: RouteLink.TOOLS, 
               element: <Tools />,
@@ -90,42 +91,35 @@ export const routeConfig: RouteObject[] = [
             { path: RouteLink.TOOLS_ROULETTE, element: <Roulette /> },
             { path: RouteLink.TOOLS_SETTLEMENT, element: <Settlement /> },
             { path: RouteLink.TOOLS_MAP, element: <MapTool /> },
-            { 
-              path: RouteLink.CHAT, 
-              element: <Chat />,
-              handle: { label: '채팅', isMainMenu: true, authRequired: false, linkPath: RouteLink.CHAT.replace('/*', '') }
-            },
-      
-            { path: RouteLink.MYPAGE, element: <ProtectedRoute authRequired roles={[UserRole.USER, UserRole.ADMIN]}><Mypage /></ProtectedRoute> },
-            { path: RouteLink.NOTIFICATIONS, element: <ProtectedRoute authRequired roles={[UserRole.USER, UserRole.ADMIN]}><Notifications /></ProtectedRoute> },
-            
+            { path: RouteLink.MYPAGE, element: <RequireAuth authRequired><Mypage /></RequireAuth> },
+            { path: RouteLink.NOTIFICATIONS, element: <RequireAuth authRequired><Notifications /></RequireAuth> },
             {
               path: RouteLink.ADMIN,
-              element: <ProtectedRoute authRequired roles={[UserRole.ADMIN]}><Dashboard /></ProtectedRoute>,
+              element: <RequireAuth adminRequired><Dashboard /></RequireAuth>,
               handle: { label: '관리자 홈', isMainMenu: true, authRequired: true, roles: ['ADMIN'] }
             },
             {
               path: RouteLink.ADMIN_DASHBOARD,
-              element: <ProtectedRoute authRequired roles={[UserRole.ADMIN]}><Dashboard /></ProtectedRoute>,
+              element: <RequireAuth adminRequired><Dashboard /></RequireAuth>,
             },
             {
               path: RouteLink.ADMIN_MEMBERS,
-              element: <ProtectedRoute authRequired roles={[UserRole.ADMIN]}><MemberManagement /></ProtectedRoute>,
+              element: <RequireAuth adminRequired><MemberManagement /></RequireAuth>,
               handle: { label: '회원 관리', isMainMenu: true, authRequired: true, roles: ['ADMIN'] }
             },
             {
               path: RouteLink.ADMIN_POSTS,
-              element: <ProtectedRoute authRequired roles={[UserRole.ADMIN]}><PostManagement /></ProtectedRoute>,
+              element: <RequireAuth adminRequired><PostManagement /></RequireAuth>,
               handle: { label: '게시글 관리', isMainMenu: true, authRequired: true, roles: ['ADMIN'] }
             },
             {
               path: RouteLink.ADMIN_SYSTEM,
-              element: <ProtectedRoute authRequired roles={[UserRole.ADMIN]}><SystemManagement /></ProtectedRoute>,
+              element: <RequireAuth adminRequired><SystemManagement /></RequireAuth>,
               handle: { label: '서버 관리', isMainMenu: true, authRequired: true, roles: ['ADMIN'] }
             },
             {
               path: RouteLink.ADMIN_APIS,
-              element: <ProtectedRoute authRequired roles={[UserRole.ADMIN]}><ApiManagement /></ProtectedRoute>,
+              element: <RequireAuth adminRequired><ApiManagement /></RequireAuth>,
               handle: { label: 'API 관리', isMainMenu: true, authRequired: true, roles: ['ADMIN'] }
             },
           ]
@@ -137,17 +131,17 @@ export const routeConfig: RouteObject[] = [
             { path: RouteLink.TERMS, element: <Terms />, handle: { label: '이용약관', isFooterMenu: true, authRequired: false } },
             { path: RouteLink.NOTICE, element: <NoticeList />, handle: { label: '공지사항', isFooterMenu: true, authRequired: false } },
             { path: RouteLink.NOTICE_DETAIL, element: <NoticeDetail /> },
-            { path: RouteLink.NOTICE_WRITE, element: <ProtectedRoute authRequired><NoticeForm /></ProtectedRoute> },
-            { path: RouteLink.NOTICE_EDIT,  element: <ProtectedRoute authRequired><NoticeForm /></ProtectedRoute> },
+            { path: RouteLink.NOTICE_WRITE, element: <RequireAuth authRequired><NoticeForm /></RequireAuth> },
+            { path: RouteLink.NOTICE_EDIT,  element: <RequireAuth authRequired><NoticeForm /></RequireAuth> },
           ]
         },
         {
           element: <SimpleLayout />,
           children: [
-            { path: RouteLink.LOGIN, element: <Login /> },
-            { path: RouteLink.SIGNUP, element: <Signup /> },
-            { path: RouteLink.FIND_ID, element: <FindId /> },
-            { path: RouteLink.FIND_PW, element: <FindPw /> },
+            { path: RouteLink.LOGIN, element: <RequireAuth guestRequired><Login /></RequireAuth> },
+            { path: RouteLink.SIGNUP, element: <RequireAuth guestRequired><Signup /></RequireAuth> },
+            { path: RouteLink.FIND_ID, element: <RequireAuth guestRequired><FindId /></RequireAuth> },
+            { path: RouteLink.FIND_PW, element: <RequireAuth guestRequired><FindPw /></RequireAuth> },
           ]
         }
     ]

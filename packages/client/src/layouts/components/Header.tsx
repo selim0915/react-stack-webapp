@@ -1,15 +1,15 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { logo } from '../../assets';
-import useAuth from '../../hooks/useAuth';
+import { useFirebaseAuth } from '../../components/providers/AuthProvider';
 import { RouteLink } from '../../routes/routes';
 import Nav from './Nav';
 import SubNav from './SubNav';
-import './header.css'; // 새로 생성한 CSS 파일 임포트
+import './header.css';
 
 const Header: React.FC = () => {
   const navigate = useNavigate();
-  const { isLoggedIn } = useAuth();
+  const { isAuthenticated } = useFirebaseAuth();
 
   return (
     <header className="sticky top-0 z-50 w-full bg-[var(--ui-color-background)] font-sans flex flex-col">
@@ -40,7 +40,7 @@ const Header: React.FC = () => {
               <option value="en">English</option>
             </select>
 
-            {isLoggedIn ? (
+            {isAuthenticated ? (
               <>
                 <button 
                   type="button"
