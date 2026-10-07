@@ -22,7 +22,7 @@ const Nav: React.FC = () => {
   return (
     <>
       {/* Main Nav Items */}
-      <nav className="flex items-center h-full gap-6">
+      <nav className="flex flex-wrap items-center h-full gap-x-4 gap-y-2 md:gap-6">
         {menuItems.map((item) => {
           const isActive = activeMenu?.path === item.path;
           return (

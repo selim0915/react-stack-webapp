@@ -6,7 +6,7 @@ const Footer: React.FC = () => {
   const footerMenus = getFooterMenus();
 
   return (
-    <footer className="w-full bg-[#fafafa] border-t border-[#e4e8eb] py-8 mt-auto">
+    <footer className="w-full bg-[#fafafa] border-t border-[#e4e8eb] py-4 md:py-8 mt-auto">
       <div className="max-w-[var(--content-width)] mx-auto px-8 flex flex-wrap justify-center items-center gap-x-2 gap-y-4 text-[13px] text-[#424242]">
         {footerMenus.map((menu, index) => (
           <React.Fragment key={menu.path}>

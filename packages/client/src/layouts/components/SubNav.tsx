@@ -24,8 +24,8 @@ const SubNav: React.FC = () => {
   }
 
   return (
-    <div className="w-full bg-[var(--ui-color-background)] border-b border-[var(--ui-color-border)] h-[var(--submenu-height)] flex items-center z-40">
-      <div className="max-w-[var(--content-width)] mx-auto w-full px-8 flex gap-6">
+    <div className="w-full bg-[var(--ui-color-background)] border-b border-[var(--ui-color-border)] min-h-[var(--submenu-height)] py-2 flex items-center z-40">
+      <div className="max-w-[var(--content-width)] mx-auto w-full px-4 md:px-8 flex flex-wrap gap-x-4 gap-y-2 md:gap-6">
         {activeMenu.subMenus.map((sub) => {
           const isSubActive = location.pathname === sub.path || (sub.path !== '/' && location.pathname.startsWith(sub.path));
           return (

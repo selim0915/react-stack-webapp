@@ -42,9 +42,9 @@ const Main: React.FC = () => {
         <Carousel hasConsent={hasConsent} />
       </div>
       
-      <div className="text-center mt-12 mb-16">
-        <h3 className="text-3xl font-bold text-[var(--ui-color-primary)] mb-10">{ko.PROJECT_NAME}</h3>
-        <p className="text-base text-[var(--ui-color-secondary)] mb-6 w-[500px] mx-auto break-keep leading-relaxed whitespace-pre-wrap">{ko.PROJECT_DESCRIPTION}</p>
+      <div className="text-center mt-12 mb-16 w-full overflow-hidden">
+        <h3 className="text-3xl font-bold text-[var(--ui-color-primary)] mb-10 px-4 break-all sm:break-normal">{ko.PROJECT_NAME}</h3>
+        <p className="text-base text-[var(--ui-color-secondary)] mb-6 max-w-[500px] w-full px-4 mx-auto break-keep leading-relaxed whitespace-pre-wrap">{ko.PROJECT_DESCRIPTION}</p>
       </div>
 
       <Modal

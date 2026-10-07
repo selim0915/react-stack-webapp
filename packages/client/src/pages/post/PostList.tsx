@@ -75,18 +75,18 @@ const PostList: React.FC = () => {
           <Link 
             key={post.id} 
             to={RouteLink.POST_DETAIL.replace(':id', post.id.toString())}
-            className="py-6 border-b border-[var(--ui-color-border)] flex gap-6 hover:bg-gray-50 cursor-pointer transition-colors outline-none"
+            className="py-4 sm:py-6 border-b border-[var(--ui-color-border)] flex gap-3 sm:gap-6 hover:bg-gray-50 cursor-pointer transition-colors outline-none"
           >
             {/* 왼쪽: 텍스트 영역 */}
             <div className="flex-1 flex flex-col justify-center min-w-0">
-              <h4 className="text-[18px] font-bold text-[var(--ui-color-text)] mb-2 truncate">
+              <h4 className="text-[16px] sm:text-[18px] font-bold text-[var(--ui-color-text)] mb-1 sm:mb-2 truncate">
                 {post.title}
               </h4>
-              <p className="text-[14px] text-[var(--ui-color-secondary)] mb-4 line-clamp-2 leading-relaxed break-keep">
+              <p className="text-[13px] sm:text-[14px] text-[var(--ui-color-secondary)] mb-2 sm:mb-4 line-clamp-2 leading-relaxed break-keep">
                 {post.content}
               </p>
               
-              <div className="text-[12px] text-[#9CA3AF] flex items-center gap-3">
+              <div className="text-[11px] sm:text-[12px] text-[#9CA3AF] flex flex-wrap items-center gap-x-3 gap-y-1">
                 <div className="flex items-center gap-1">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor">
                     <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
@@ -115,7 +115,7 @@ const PostList: React.FC = () => {
                   <span>{post.createdAt}</span>
                 </div>
 
-                <div className="flex items-center gap-1">
+                <div className="flex items-center gap-1 hidden sm:flex">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor">
                     <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
                     <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" />
@@ -127,7 +127,7 @@ const PostList: React.FC = () => {
             
             {/* 오른쪽: 이미지 영역 */}
             {post.thumbnail && (
-              <div className="w-[140px] h-[90px] flex-shrink-0 overflow-hidden rounded-lg">
+              <div className="w-[80px] h-[60px] sm:w-[140px] sm:h-[90px] flex-shrink-0 overflow-hidden rounded-lg mt-1 sm:mt-0">
                 <img src={post.thumbnail} alt={post.title} className="w-full h-full object-cover" />
               </div>
             )}

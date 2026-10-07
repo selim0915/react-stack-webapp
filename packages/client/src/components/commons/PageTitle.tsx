@@ -7,8 +7,7 @@ const getPageTitle = (pathname: string): string | null => {
   if (matchPath({ path: RouteLink.FIND_ID }, pathname)) return '아이디 찾기';
   if (matchPath({ path: RouteLink.FIND_PW }, pathname)) return '비밀번호 찾기';
   if (matchPath({ path: RouteLink.POSTS }, pathname)) return '게시글';
-  if (matchPath({ path: RouteLink.SOCIAL }, pathname)) return '소셜 목록';
-  if (matchPath({ path: RouteLink.SOCIAL_DETAIL }, pathname)) return '소셜 상세';
+  if (matchPath({ path: RouteLink.SOCIAL }, pathname)) return '소셜';
   if (matchPath({ path: RouteLink.TOOLS }, pathname)) return '미니 도구';
   if (matchPath({ path: RouteLink.TOOLS_ROULETTE }, pathname)) return '룰렛';
   if (matchPath({ path: RouteLink.TOOLS_SETTLEMENT }, pathname)) return '정산하기';
