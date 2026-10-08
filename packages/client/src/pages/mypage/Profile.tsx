@@ -1,19 +1,24 @@
+import { getAuth, signOut } from "firebase/auth";
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useDispatch } from "react-redux";
 import { Button } from '../../components/commons';
-import useAuth from '../../hooks/useAuth';
-import { RouteLink } from '../../routes/routes';
+import { app } from "../../libs/firebaseApp";
+import { showToast } from "../../store/slices/uiSlice";
 import ProfileForm from './ProfileForm';
 import PromotionConsent from './PromotionConsent';
 
 const Profile: React.FC = () => {
-  const navigate = useNavigate();
-  const { logout: authLogout } = useAuth();
+  const dispatch = useDispatch();
 
-  const handleLogout = () => {
-    authLogout(() => {
-      navigate(RouteLink.MAIN);
-    });
+  const handleLogout = async () => {
+    try {
+      const auth = getAuth(app);
+      await signOut(auth);
+      dispatch(showToast("로그아웃 되었습니다."));
+    } catch (err) {
+      dispatch(showToast("로그아웃 실패했습니다."));
+      console.log(err);
+    }
   };
 
   return (
