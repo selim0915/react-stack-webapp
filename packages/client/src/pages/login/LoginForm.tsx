@@ -1,18 +1,15 @@
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from 'react';
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Button, Form, Input } from '../../components/commons';
-import useAuth from '../../hooks/useAuth';
-import { app } from "../../libs/firebaseApp";
+import * as AuthAPI from '../../apis/auth.api';
 import RouteLink from '../../routes/routes';
 import { showToast } from "../../store/slices/uiSlice";
-import { UserRole } from '../../utils/constants';
 
 const LoginForm: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { login: authLogin } = useAuth();
+  
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
@@ -21,19 +18,13 @@ const LoginForm: React.FC = () => {
     e.preventDefault();
 
     try {
-      const auth = getAuth(app);
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      const token = await userCredential.user.getIdToken();
+      await AuthAPI.login(email, password);
       
-      // 관리자 이메일 하드코딩 혹은 기본값으로 처리 (원하시는 조건에 맞게 변경 가능)
-      const role = email === 'admin@co.kr' ? UserRole.ADMIN : UserRole.USER;
-      authLogin(email, role, token); // 기존 useAuth 훅의 로직(Redux, Cookie 세팅) 실행
-
       dispatch(showToast("로그인에 성공했습니다."));
       navigate(RouteLink.MAIN);
     } catch (err) {
       dispatch(showToast("로그인에 실패했습니다."));
-      console.log(err);
+      console.error(err);
     }
   };
 

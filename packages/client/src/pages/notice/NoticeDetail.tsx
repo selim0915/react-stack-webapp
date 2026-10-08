@@ -1,9 +1,9 @@
 ﻿import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Button } from '../../components/commons';
-import { UserRole } from '../../utils/constants';
-import useAuth from '../../hooks/useAuth';
 import { RouteLink } from '../../routes/routes';
+import { useAppSelector } from '../../store/hooks';
+import { UserRole } from '../../utils/constants';
 
 interface Notice {
   id: number;
@@ -16,8 +16,8 @@ interface Notice {
 const NoticeDetail: React.FC = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { userId, userRole } = useAuth();
-  const [post, setPost] = useState<Notice | null>(null);
+  const { email, role } = useAppSelector((state) => state.user);
+  const [notice, setNotice] = useState<Notice | null>(null);
 
   useEffect(() => {
     const savedPosts = localStorage.getItem('notice_notices');
@@ -25,7 +25,7 @@ const NoticeDetail: React.FC = () => {
       const notices = JSON.parse(savedPosts);
       const foundPost = notices.find((p: Notice) => p.id === Number(id));
       if (foundPost) {
-        setPost(foundPost);
+        setNotice(foundPost);
       } else {
         alert('존재하지 않는 게시글입니다.');
         navigate(RouteLink.NOTICE);
@@ -68,7 +68,7 @@ const NoticeDetail: React.FC = () => {
           목록
         </Button>
 
-        {(userId === notice.author || userRole === UserRole.ADMIN) && (
+        {(email === notice.author || role === UserRole.ADMIN) && (
           <div style={{ display: 'flex', gap: '10px' }}>
             <Button
               onClick={() => navigate(RouteLink.NOTICE_EDIT.replace(':id', notice.id.toString()))}

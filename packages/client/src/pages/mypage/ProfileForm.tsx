@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import * as UserAPI from '../../apis/user.api';
 import { Button, Input } from '../../components/commons';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { updateUserInfo } from '../../store/slices/userSlice';
+import { updateUser } from '../../store/slices/userSlice';
 
 const ProfileForm: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -27,18 +28,27 @@ const ProfileForm: React.FC = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    dispatch(
-      updateUserInfo({
+    try {
+      await UserAPI.updateProfile({
         nickname: formData.nickname,
         phoneNumber: formData.phoneNumber,
-      }),
-    );
-    alert('기본정보가 수정되었습니다.');
+      });
+
+      dispatch(
+        updateUser({
+          nickname: formData.nickname,
+          phoneNumber: formData.phoneNumber,
+        }),
+      );
+      alert('기본정보가 수정되었습니다.');
+    } catch (error) {
+      alert('기본정보 수정에 실패했습니다.');
+    }
   };
 
-  const getGenderText = (gender: string) => {
+const getGenderText = (gender: string) => {
     if (gender === 'M') return '남성';
     if (gender === 'F') return '여성';
     return '-';
@@ -56,26 +66,17 @@ const ProfileForm: React.FC = () => {
             </svg>
           </div>
           <div className="flex flex-col items-start gap-1 flex-1 min-w-0">
-            <span className="text-lg font-bold text-gray-900 break-all">{user.email}</span>
-            <span className="px-2 py-0.5 bg-blue-100 text-blue-700 text-xs font-semibold rounded-full">
-              {user.role === 'ADMIN' ? '관리자' : '일반 회원'}
-            </span>
+            <div className="flex items-center gap-2 w-full">
+              <span className="text-xl font-bold text-gray-900 break-all">{user.name}</span>
+              <span className="px-2 py-0.5 bg-blue-100 text-blue-700 text-xs font-semibold rounded-full shrink-0">
+                {user.role === 'ADMIN' ? '관리자' : '일반 회원'}
+              </span>
+            </div>
+            <span className="text-sm text-gray-600 break-all">{user.email}</span>
           </div>
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
-          <div>
-            <label htmlFor="nickname" className="block text-sm text-gray-500 mb-2">닉네임</label>
-            <Input
-              type="text"
-              id="nickname"
-              name="nickname"
-              value={formData.nickname}
-              onChange={handleChange}
-              placeholder="닉네임을 입력하세요"
-              style={{ width: '100%' }}
-            />
-          </div>
           <div>
             <label htmlFor="birthDate" className="block text-sm text-gray-500 mb-2">생년월일</label>
             <Input
@@ -106,6 +107,18 @@ const ProfileForm: React.FC = () => {
                 cursor: 'not-allowed',
                 border: '1px solid #e5e5e5',
               }}
+            />
+          </div>
+          <div>
+            <label htmlFor="nickname" className="block text-sm text-gray-500 mb-2">닉네임</label>
+            <Input
+              type="text"
+              id="nickname"
+              name="nickname"
+              value={formData.nickname}
+              onChange={handleChange}
+              placeholder="닉네임을 입력하세요"
+              style={{ width: '100%' }}
             />
           </div>
           <div>

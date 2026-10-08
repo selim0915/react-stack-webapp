@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import Carousel from '../../components/commons/Carousel';
 import { Modal } from '../../components/commons';
 import { ko } from '../../locales';
-import { useAppSelector } from '../../store/hooks';
+import { useFirebaseAuth } from '../../components/providers/AuthProvider';
 import { getCookie, setCookie } from '../../utils/cookie';
 
 const Main: React.FC = () => {
-  const isLoggedIn = useAppSelector((state) => state.user.isLoggedIn);
+  const { isAuthenticated } = useFirebaseAuth();
   const [showConsentModal, setShowConsentModal] = useState(false);
 
   const [hasConsent, setHasConsent] = useState(false);
@@ -15,14 +15,14 @@ const Main: React.FC = () => {
     const consented = getCookie('COOKIE_CONSENT_ACCEPTED');
     setHasConsent(!!consented);
 
-    if (isLoggedIn) {
+    if (isAuthenticated) {
       const hasSkipped = getCookie('COOKIE_CONSENT_SKIPPED');
       
       if (!consented && !hasSkipped) {
         setShowConsentModal(true);
       }
     }
-  }, [isLoggedIn]);
+  }, [isAuthenticated]);
 
   const handleConsentConfirm = () => {
     setCookie('COOKIE_CONSENT_ACCEPTED', 'true', 365);

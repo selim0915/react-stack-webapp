@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { useFirebaseAuth } from '../components/providers/AuthProvider';
-import useAuth from '../hooks/useAuth';
+import { useAppSelector } from '../store/hooks';
 import { UserRole } from '../utils/constants';
 import { RouteLink } from './routes';
 
@@ -14,8 +14,8 @@ interface RequireAuthProps {
 
 const RequireAuth: React.FC<RequireAuthProps> = ({ authRequired = false, guestRequired = false, adminRequired = false, children }) => {
   const location = useLocation();
-  const { userRole } = useAuth();
   const { isAuthenticated } = useFirebaseAuth();
+  const { role } = useAppSelector((state) => state.user);
 
   // 1. Guest Only
   if (guestRequired && isAuthenticated) {
@@ -28,7 +28,7 @@ const RequireAuth: React.FC<RequireAuthProps> = ({ authRequired = false, guestRe
   }
 
   // 3. Admin Check
-  if (adminRequired && userRole !== UserRole.ADMIN) {
+  if (adminRequired && role !== UserRole.ADMIN) {
     return <Navigate to="/error?type=403" replace />;
   }
 

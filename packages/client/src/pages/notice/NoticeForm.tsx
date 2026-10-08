@@ -1,9 +1,9 @@
 ﻿import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { RouteLink } from '../../routes/routes';
 import { Button, Form, Input, Textarea } from '../../components/commons';
+import { RouteLink } from '../../routes/routes';
+import { useAppSelector } from '../../store/hooks';
 import { UserRole } from '../../utils/constants';
-import useAuth from '../../hooks/useAuth';
 import { formatDate } from '../../utils/format';
 
 interface Notice {
@@ -17,7 +17,7 @@ interface Notice {
 const NoticeForm: React.FC = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { userId, userRole } = useAuth();
+  const { email, role } = useAppSelector((state) => state.user);
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [isEdit, setIsEdit] = useState(false);
@@ -30,7 +30,7 @@ const NoticeForm: React.FC = () => {
         const notices = JSON.parse(savedPosts);
         const notice = notices.find((p: Notice) => p.id === Number(id));
         if (notice) {
-          if (userId !== notice.author && userRole !== UserRole.ADMIN) {
+          if (email !== notice.author && role !== UserRole.ADMIN) {
             alert('권한이 없습니다.');
             navigate(RouteLink.NOTICE);
             return;
@@ -44,7 +44,7 @@ const NoticeForm: React.FC = () => {
       setTitle('');
       setContent('');
     }
-  }, [id, userId, userRole, navigate]);
+  }, [id, email, role, navigate]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -62,7 +62,7 @@ const NoticeForm: React.FC = () => {
         id: notices.length > 0 ? Math.max(...notices.map((p: any) => p.id)) + 1 : 1,
         title,
         content,
-        author: userId || '익명',
+        author: email || '익명',
         createdAt: formatDate(new Date()),
       };
       const updatedPosts = [newPost, ...notices];

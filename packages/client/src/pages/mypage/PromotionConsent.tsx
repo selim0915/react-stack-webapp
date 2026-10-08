@@ -1,6 +1,7 @@
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { updateUserInfo } from '../../store/slices/userSlice';
+import { showToast } from '../../store/slices/uiSlice';
+import { updateUser } from '../../store/slices/userSlice';
 
 const PromotionConsent: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -9,9 +10,8 @@ const PromotionConsent: React.FC = () => {
   const handleConsentChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, checked } = e.target;
     
-    // 프로모션 동의는 체크하는 즉시 별도로 저장 (메인 폼 저장과 분리)
     dispatch(
-      updateUserInfo({
+      updateUser({
         agreements: {
           ...user.agreements,
           [name]: checked,
@@ -19,11 +19,10 @@ const PromotionConsent: React.FC = () => {
       }),
     );
 
-    // 임시 저장 피드백 (추후 API 연동 시 제거 가능)
     if (checked) {
-      alert('약관 동의했습니다.');
+      dispatch(showToast("약관 동의했습니다."));
     } else {
-      alert('약관 거부했습니다.');
+      dispatch(showToast("약관 동의 해제했습니다."));
     }
   };
 

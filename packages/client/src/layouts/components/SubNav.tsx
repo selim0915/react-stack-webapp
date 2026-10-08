@@ -1,16 +1,16 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import useAuth from '../../hooks/useAuth';
+import { useAppSelector } from '../../store/hooks';
 import { getMainMenus } from '../../utils/menus';
 
 const SubNav: React.FC = () => {
   const location = useLocation();
-  const { isLoggedIn, userRole } = useAuth();
+  const { role } = useAppSelector((state) => state.user);
 
   const menuItems = getMainMenus().filter((menu) => {
-    if (!isLoggedIn && menu.authRequired) return false;
-    if (isLoggedIn && menu.roles && menu.roles.length > 0) {
-      return menu.roles.includes(userRole || '');
+    if (menu.authRequired) return false;
+    if (menu.roles && menu.roles.length > 0) {
+      return menu.roles.indexOf(role || '') !== -1;
     }
     return true;
   });

@@ -1,0 +1,28 @@
+{
+  "admin@co.kr": {
+    "email": "admin@co.kr",
+    "nickname": "최고관리자",
+    "name": "관리자",
+    "phoneNumber": "010-9999-9999",
+    "gender": "M",
+    "birthDate": "1999-01-01",
+    "role": "ADMIN",
+    "agreements": {
+      "termsOfService": true,
+      "privacyPolicy": true
+    }
+  },
+  "selim0915@gmail.com": {
+    "email": "selim0915@gmail.com",
+    "nickname": "우세우세",
+    "name": "홍길동",
+    "phoneNumber": "010-1234-5678",
+    "gender": "F",
+    "birthDate": "2020-03-15",
+    "role": "USER",
+    "agreements": {
+      "termsOfService": true,
+      "privacyPolicy": true
+    }
+  }
+}

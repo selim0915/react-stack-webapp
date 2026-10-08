@@ -1,9 +1,8 @@
-import { getAuth, signOut } from "firebase/auth";
 import React from 'react';
 import { useDispatch } from "react-redux";
 import { Button } from '../../components/commons';
-import { app } from "../../libs/firebaseApp";
 import { showToast } from "../../store/slices/uiSlice";
+import * as AuthAPI from '../../apis/auth.api';
 import ProfileForm from './ProfileForm';
 import PromotionConsent from './PromotionConsent';
 
@@ -12,8 +11,9 @@ const Profile: React.FC = () => {
 
   const handleLogout = async () => {
     try {
-      const auth = getAuth(app);
-      await signOut(auth);
+      // AuthAPI 내부에서 백엔드 로그아웃과 Firebase 로그아웃을 모두 처리합니다.
+      await AuthAPI.logout();
+      
       dispatch(showToast("로그아웃 되었습니다."));
     } catch (err) {
       dispatch(showToast("로그아웃 실패했습니다."));
