@@ -1,21 +1,23 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface UserState {
-  id: string; // 사용자 아이디 (로그인 ID)
+  email: string; // 로그인 아이디 (이메일)
+  nickname: string; // 기존 id를 nickname으로 변경
   name: string;
   phoneNumber: string;
-  gender: 'M' | 'F' | ''; // 성별
-  birthDate: string; // 생년월일 (YYYY-MM-DD)
-  role: string; // 사용자 역할 (admin, user 등)
+  gender: 'M' | 'F' | '';
+  birthDate: string;
+  role: string;
   agreements: {
-    termsOfService: boolean; // 이용약관 동의
-    privacyPolicy: boolean; // 개인정보 처리방침 동의
+    termsOfService: boolean;
+    privacyPolicy: boolean;
   };
   isLoggedIn: boolean;
 }
 
 const initialState: UserState = {
-  id: '',
+  email: '',
+  nickname: '',
   name: '',
   phoneNumber: '',
   gender: '',
@@ -33,8 +35,9 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     loginSuccess: (state, action: PayloadAction<Omit<UserState, 'isLoggedIn'>>) => {
-      const { id, name, phoneNumber, gender, birthDate, agreements, role } = action.payload;
-      state.id = id;
+      const { email, nickname, name, phoneNumber, gender, birthDate, agreements, role } = action.payload;
+      state.email = email;
+      state.nickname = nickname;
       state.name = name;
       state.phoneNumber = phoneNumber;
       state.gender = gender;
@@ -44,7 +47,8 @@ const userSlice = createSlice({
       state.isLoggedIn = true;
     },
     logout: (state) => {
-      state.id = '';
+      state.email = '';
+      state.nickname = '';
       state.name = '';
       state.phoneNumber = '';
       state.gender = '';

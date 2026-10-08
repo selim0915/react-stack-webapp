@@ -9,7 +9,8 @@ export const getUserInfo = async (): Promise<Omit<UserState, 'isLoggedIn'>> =>
    new Promise((resolve) => {
     setTimeout(() => {
       resolve({
-        id: 'user123',
+        email: 'user@example.com',
+        nickname: 'user123',
         name: '복구된 사용자',
         phoneNumber: '010-1234-5678',
         gender: 'M',

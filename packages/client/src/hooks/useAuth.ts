@@ -6,14 +6,15 @@ import { deleteAllCookies, setCookie } from '../utils/cookie';
 
 const useAuth = () => {
   const dispatch = useAppDispatch();
-  const { isLoggedIn, role: userRole, id: userId } = useAppSelector((state) => state.user);
+  const { isLoggedIn, role: userRole, email } = useAppSelector((state) => state.user);
 
   const login = useCallback(
-    (id: string, role: string, token: string) => {
+    (emailId: string, role: string, token: string) => {
       setCookie(CookieKey.ACCESS_TOKEN, token, 1);
       dispatch(
         loginSuccess({
-          id,
+          email: emailId,
+          nickname: emailId.split('@')[0], // 이메일 앞부분을 임시 닉네임으로
           name: '사용자',
           phoneNumber: '010-0000-0000',
           gender: 'M',
@@ -35,7 +36,7 @@ const useAuth = () => {
     [dispatch],
   );
 
-  return { isLoggedIn, userRole, userId, login, logout };
+  return { isLoggedIn, userRole, email, login, logout };
 };
 
 export default useAuth;
